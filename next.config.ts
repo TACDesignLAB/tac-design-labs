@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**.tacdesignlab.org',
+        hostname: '**.tacdesignlab.com',
       },
       {
         protocol: 'https',
