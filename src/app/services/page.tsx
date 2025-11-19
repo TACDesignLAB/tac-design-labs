@@ -6,74 +6,61 @@ import {
   ZoomCarouselSlide,
 } from '~/components/zoom-carousel';
 
-import { getOptimizedBackgroundImage } from '~/utils/background-image-optimizer';
-
-import OurWorkBgButton from '~/assets/images/button-background.png';
-import servicePageBackground from '~/assets/images/career-page-background.png';
-import conservationProject from '~/assets/images/conservation-project.png';
-import designDreamDeliverBG from '~/assets/images/design-dream-deliver-bg.jpg';
-import hospitality from '~/assets/images/hospilatiy-service.png';
-import institution from '~/assets/images/institution-service.png';
-import interiorService from '~/assets/images/interior-service.png';
-import landscapeDesign from '~/assets/images/landscape-design.png';
-import piscart from '~/assets/images/piscart-service.jpeg';
-import serviceYoutubeBg from '~/assets/images/services-yt-bg.png';
-import udupiService from '~/assets/images/udupi-service.jpeg';
+import { getCloudinaryUrl } from '~/utils/cloudinary';
 
 import { ServiceCard } from './service-card';
-import type { StaticImageData } from 'next/image';
 
 export interface ServiceCardInfo {
   title: string;
-  image: StaticImageData;
+  image: string;
   categories: string[];
   description: string;
 }
 const services: ServiceCardInfo[] = [
   {
-    image: udupiService,
+    image: getCloudinaryUrl('assets/images/udupi-service.jpeg'),
     title: 'Residential Projects',
     categories: ['Houses', 'Apartments', 'Villas'],
     description:
       'Crafting sustainable, eco-conscious homes that blend comfort with innovative design.',
   },
   {
-    image: piscart,
+    image: getCloudinaryUrl('assets/images/piscart-service.jpeg'),
     title: 'Commercial Projects',
     categories: ['Shops', 'Malls', 'Offices'],
     description:
       'Designing dynamic commercial spaces that foster growth and elevate brand presence.',
   },
   {
-    image: institution,
+    image: getCloudinaryUrl('assets/images/institution-service.png'),
     title: 'Institutional Projects',
     categories: ['Educational', 'Healthcare', 'Yoga Centers'],
     description:
       'Building institutions that inspire learning, healing, and holistic well-being.',
   },
   {
-    image: hospitality,
+    image: getCloudinaryUrl('assets/images/hospilatiy-service.png'),
     title: 'Hospitality Projects ',
     categories: ['Hotels', 'Resorts', 'Homestays'],
     description:
       'Creating serene and sustainable retreats that offer luxury in harmony with nature.',
   },
   {
-    image: conservationProject,
+    image: getCloudinaryUrl('assets/images/conservation-project.png'),
     title: 'Conservation Projects',
     categories: ['Heritage Restoration', 'Adaptive Reuse'],
     description:
       'Preserving historical structures with innovative, eco-friendly methods that honor their legacy.',
   },
   {
-    image: landscapeDesign,
+    image: getCloudinaryUrl('assets/images/landscape-design.png'),
     title: 'Landscape Design',
     categories: ['Parks', 'Gardens', 'Outdoor Spaces'],
     description:
       'Designing green, sustainable landscapes that enhance natural beauty and promote biodiversity.',
   },
   {
-    image: interiorService,
+    image: getCloudinaryUrl('assets/images/interior-service.png'),
     title: 'Interior Design',
     categories: ['Residential & Commercial Interiors'],
     description:
@@ -138,21 +125,9 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
 );
 
 const ServicePage = () => {
-  const optimizedServicesPageBackground = getOptimizedBackgroundImage({
-    src: servicePageBackground.src,
-    width: servicePageBackground.width,
-    height: servicePageBackground.height,
-  });
-  const optimizedBG = getOptimizedBackgroundImage({
-    src: designDreamDeliverBG.src,
-    width: designDreamDeliverBG.width,
-    height: designDreamDeliverBG.height,
-  });
-  const optimizedOurWorkBgButton = getOptimizedBackgroundImage({
-    src: OurWorkBgButton.src,
-    width: OurWorkBgButton.width,
-    height: OurWorkBgButton.height,
-  });
+  const optimizedServicesPageBackground = `url("${getCloudinaryUrl('assets/images/career-page-background.png')}")`;
+  const optimizedBG = `url("${getCloudinaryUrl('assets/images/design-dream-deliver-bg.jpg')}")`;
+  const optimizedOurWorkBgButton = `url("${getCloudinaryUrl('assets/images/button-background.png')}")`;
 
   return (
     <div
@@ -211,7 +186,7 @@ const ServicePage = () => {
         <div
           className="mx-auto bg-opacity-60 bg-cover"
           style={{
-            backgroundImage: `url(${serviceYoutubeBg.src})`,
+            backgroundImage: `url(${getCloudinaryUrl('assets/images/services-yt-bg.png')})`,
           }}
         >
           <div className="font-primary font-[600] text-[#552B0A]">

@@ -3,54 +3,19 @@ import { type StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { getOptimizedBackgroundImage } from '~/utils/background-image-optimizer';
+import { getCloudinaryUrl } from '~/utils/cloudinary';
 import { cn } from '~/utils/cn';
 
 import SeparatorLG from '~/assets/svgs/separator-lg.svg';
 import SeparatorSM from '~/assets/svgs/separator-sm.svg';
 
-import aboutUsCtaBg from '~/assets/images/about-us-cta.png';
-import aboutUsImag8Mob from '~/assets/images/about-us-image-8-mobile.png';
-import aboutUsPageBackground from '~/assets/images/about-us-page-background.png';
-import aboutUsPageImage1 from '~/assets/images/about-us-page-image-1.png';
-import aboutUsPageImage2 from '~/assets/images/about-us-page-image-2.png';
-import aboutUsPageImage3 from '~/assets/images/about-us-page-image-3.png';
-import aboutUsPageImage4 from '~/assets/images/about-us-page-image-4.png';
-import aboutUsPageImage5 from '~/assets/images/about-us-page-image-5.jpeg';
-import aboutUsPageImage6 from '~/assets/images/about-us-page-image-6.jpeg';
-import aboutUsPageImage7 from '~/assets/images/about-us-page-image-7.png';
-import aboutUsPageImage8 from '~/assets/images/about-us-page-image-8.png';
-import aboutUsPageImage9 from '~/assets/images/about-us-page-image-9.png';
-import aboutUsImage10 from '~/assets/images/about-us-page-image-10.jpg';
-import aboutUsImage11 from '~/assets/images/about-us-page-image-11.jpeg';
-import aboutUsImage12 from '~/assets/images/about-us-page-image-12.jpeg';
-import aboutUsImage13 from '~/assets/images/about-us-page-image-13.jpeg';
-import aboutUsImage14 from '~/assets/images/about-us-page-image-14.jpeg';
-import aboutUsImage15 from '~/assets/images/about-us-page-image-15.jpg';
-import laurieBarkerPortrait from '~/assets/images/about-us-page-laurie-barker-portrait.jpeg';
-import buttonBackground from '~/assets/images/button-background.png';
-
 import aboutUsStyles from './about-us-styles.module.css';
 import ImageGrid from './image-grid';
 
 function AboutUsPage() {
-  const optimizedAboutUsBackground = getOptimizedBackgroundImage({
-    src: aboutUsPageBackground.src,
-    width: aboutUsPageBackground.width,
-    height: aboutUsPageBackground.height,
-  });
-
-  const optimizedAboutUsCta = getOptimizedBackgroundImage({
-    src: aboutUsCtaBg.src,
-    width: aboutUsCtaBg.width,
-    height: aboutUsCtaBg.height,
-  });
-
-  const optimizedButtonBackground = getOptimizedBackgroundImage({
-    src: buttonBackground.src,
-    width: buttonBackground.width,
-    height: buttonBackground.height,
-  });
+  const optimizedAboutUsBackground = `url("${getCloudinaryUrl('assets/images/about-us-page-background.png')}")`;
+  const optimizedAboutUsCta = `url("${getCloudinaryUrl('assets/images/about-us-cta.png')}")`;
+  const optimizedButtonBackground = `url("${getCloudinaryUrl('assets/images/button-background.png')}")`;
 
   return (
     <div className="relative">
@@ -78,10 +43,18 @@ function AboutUsPage() {
 
           <ul className="space-y-10 px-8 md:px-[40px]">
             <StoryCard
-              mobileImage={aboutUsPageImage1}
-              mainImage={aboutUsPageImage1}
-              subImage1={aboutUsPageImage2}
-              subImage2={aboutUsPageImage3}
+              mobileImage={getCloudinaryUrl(
+                'assets/images/about-us-page-image-1.png',
+              )}
+              mainImage={getCloudinaryUrl(
+                'assets/images/about-us-page-image-1.png',
+              )}
+              subImage1={getCloudinaryUrl(
+                'assets/images/about-us-page-image-2.png',
+              )}
+              subImage2={getCloudinaryUrl(
+                'assets/images/about-us-page-image-3.png',
+              )}
               description="TAC Design LAB is a collective of visionary architects and designers from Thiruvananthapuram, united by a passion for sustainability and innovation. Founded by Ar. Ashams Ravi, TAC was born from a commitment to creating buildings that harmonize with the earth, inspired by the principles of Laurie Baker. We focus on using minimal resources to deliver affordable, impactful architectural solutions."
             />
 
@@ -97,10 +70,18 @@ function AboutUsPage() {
                   <span className="text-accent-500"> Our Vision</span>
                 </h3>
               }
-              mobileImage={aboutUsPageImage5}
-              mainImage={aboutUsPageImage4}
-              subImage1={aboutUsPageImage5}
-              subImage2={aboutUsPageImage6}
+              mobileImage={getCloudinaryUrl(
+                'assets/images/about-us-page-image-5.jpeg',
+              )}
+              mainImage={getCloudinaryUrl(
+                'assets/images/about-us-page-image-4.png',
+              )}
+              subImage1={getCloudinaryUrl(
+                'assets/images/about-us-page-image-5.jpeg',
+              )}
+              subImage2={getCloudinaryUrl(
+                'assets/images/about-us-page-image-6.jpeg',
+              )}
               description="Our philosophy centres on traditional craftsmanship and cultural heritage, emphasizing design innovation through sustainable techniques. We aim to meet current needs while safeguarding the well-being of future generations."
               alignment="main-right"
             />
@@ -118,10 +99,18 @@ function AboutUsPage() {
                   Designs
                 </h3>
               }
-              mobileImage={aboutUsImag8Mob}
-              mainImage={aboutUsPageImage7}
-              subImage1={aboutUsPageImage8}
-              subImage2={aboutUsPageImage9}
+              mobileImage={getCloudinaryUrl(
+                'assets/images/about-us-image-8-mobile.png',
+              )}
+              mainImage={getCloudinaryUrl(
+                'assets/images/about-us-page-image-7.png',
+              )}
+              subImage1={getCloudinaryUrl(
+                'assets/images/about-us-page-image-8.png',
+              )}
+              subImage2={getCloudinaryUrl(
+                'assets/images/about-us-page-image-9.png',
+              )}
               description="Client collaboration is fundamental to our approach. We prioritize understanding client's needs, preferences, and budget constraints, offering tailored solutions that exceed expectations. Regular site visits and adaptable designs ensure client satisfaction."
               alignment="main-left"
             />
@@ -140,10 +129,18 @@ function AboutUsPage() {
                   </span>
                 </h3>
               }
-              mobileImage={aboutUsImage11}
-              mainImage={aboutUsImage10}
-              subImage1={aboutUsImage12}
-              subImage2={aboutUsImage11}
+              mobileImage={getCloudinaryUrl(
+                'assets/images/about-us-page-image-11.jpeg',
+              )}
+              mainImage={getCloudinaryUrl(
+                'assets/images/about-us-page-image-10.jpg',
+              )}
+              subImage1={getCloudinaryUrl(
+                'assets/images/about-us-page-image-12.jpeg',
+              )}
+              subImage2={getCloudinaryUrl(
+                'assets/images/about-us-page-image-11.jpeg',
+              )}
               description="Our portfolio features key projects like Project Canaan, which earned the HUDCO National Award and widespread recognition for its green building efforts. Our team excels in unique, innovative designs, meticulous on-site detailing, and effective project management."
               alignment="main-left"
             />
@@ -160,10 +157,18 @@ function AboutUsPage() {
                   <span className="text-accent-500"> Greener Future </span>
                 </h3>
               }
-              mobileImage={aboutUsImage14}
-              mainImage={aboutUsImage13}
-              subImage1={aboutUsImage14}
-              subImage2={aboutUsImage15}
+              mobileImage={getCloudinaryUrl(
+                'assets/images/about-us-page-image-14.jpeg',
+              )}
+              mainImage={getCloudinaryUrl(
+                'assets/images/about-us-page-image-13.jpeg',
+              )}
+              subImage1={getCloudinaryUrl(
+                'assets/images/about-us-page-image-14.jpeg',
+              )}
+              subImage2={getCloudinaryUrl(
+                'assets/images/about-us-page-image-15.jpg',
+              )}
               description="Beyond our projects, TAC Design LAB engages with the community through collaborations with architecture and engineering colleges, advocating for sustainable practices, and conducting hands-on workshops in bamboo, mud, and brick masonry. Our vision is to reduce the building industry's environmental impact and create a sustainable future."
               alignment="main-left"
             />
@@ -182,10 +187,13 @@ function AboutUsPage() {
         <div className="flex flex-col items-center gap-5 md:flex-row md:gap-20">
           <div className="mt-5 md:my-0 md:flex-1 md:basis-1/3 lg:text-center">
             <Image
-              src={laurieBarkerPortrait}
-              placeholder="blur"
+              src={getCloudinaryUrl(
+                'assets/images/about-us-page-laurie-barker-portrait.jpeg',
+              )}
               alt="Laurie Barker Portrait"
               className="w-full overflow-hidden rounded-lg border-[6px] border-white"
+              width={500}
+              height={500}
             />
             <span className="mt-5 inline-flex space-x-2">
               <span
@@ -316,7 +324,8 @@ function StoryCard(props: StoryCardProps) {
     alignment,
   } = props;
 
-  const isImage10 = mainImage === aboutUsImage10;
+  const isImage10 =
+    mainImage === getCloudinaryUrl('assets/images/about-us-page-image-10.jpg');
 
   return (
     <li className="group">

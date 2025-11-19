@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 
-import landingPageLeavesBackground from '~/assets/images/landing-page-team-background.png';
+import { getCloudinaryUrl } from '~/utils/cloudinary';
 
 import { workDetails } from '../constant';
 import type { FeaturedVideo } from '../model';
@@ -20,7 +20,7 @@ function FeaturedVideos(props: FeaturedVideoProps) {
         <div
           className="mx-auto my-auto hidden w-full flex-col items-center justify-center p-20 bg-blend-luminosity lg:block"
           style={{
-            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.40), rgba(255, 255, 255, 0.40)), url(${landingPageLeavesBackground.src})`,
+            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.40), rgba(255, 255, 255, 0.40)), url(${getCloudinaryUrl('assets/images/landing-page-team-background.png')})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -72,7 +72,7 @@ function FeaturedVideos(props: FeaturedVideoProps) {
         <div
           className="mx-auto my-auto block pt-14 lg:hidden"
           style={{
-            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.40), rgba(255, 255, 255, 0.40)), url(${landingPageLeavesBackground.src})`,
+            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.40), rgba(255, 255, 255, 0.40)), url(${getCloudinaryUrl('assets/images/landing-page-team-background.png')})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}

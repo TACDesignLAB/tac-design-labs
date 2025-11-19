@@ -2,12 +2,12 @@ import React from 'react';
 import { Clock5, Mail, MapPin, Phone } from 'lucide-react';
 import Link from 'next/link';
 
+import { getCloudinaryUrl } from '~/utils/cloudinary';
+
 import Facebook from '~/assets/svgs/facebook-logo.svg';
 import Instagram from '~/assets/svgs/instagram-logo.svg';
 import Logo from '~/assets/svgs/tacDesign.svg';
 import Youtube from '~/assets/svgs/youtube-logo.svg';
-
-import footerBackground from '~/assets/images/footer-background.png';
 
 function Footer({ className }: Readonly<{ className?: string }>) {
   return (
@@ -16,7 +16,7 @@ function Footer({ className }: Readonly<{ className?: string }>) {
       <section
         className="flex flex-col bg-[#420C03] bg-blend-soft-light sm:flex-row sm:items-stretch"
         style={{
-          backgroundImage: `url(${footerBackground.src})`,
+          backgroundImage: `url(${getCloudinaryUrl('assets/images/footer-background.png')})`,
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',

@@ -24,7 +24,14 @@ const nextConfig: NextConfig = {
         hostname: 'localhost',
         port: '1337',
       },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
     ],
+    // Use Cloudinary's loader for optimization instead of Next.js
+    loader: 'custom',
+    loaderFile: './src/utils/cloudinary-loader.ts',
   },
   webpack(config) {
     // Grab the existing rule that handles SVG imports

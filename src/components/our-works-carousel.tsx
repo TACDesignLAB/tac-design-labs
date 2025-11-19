@@ -11,16 +11,29 @@ import {
   AutoScrollCarouselSlide,
 } from '~/components/auto-scroll-carousel';
 
-import CanaanBgImg from '~/assets/images/canaan.jpg';
-import HavenBgImg from '~/assets/images/haven.jpg';
-import SanchiBgImg from '~/assets/images/sanchi.jpg';
-import ShireBgImg from '~/assets/images/shire.jpg';
+import { getCloudinaryUrl } from '~/utils/cloudinary';
 
 const images = [
-  { src: SanchiBgImg, name: 'Sanchi Bags', place: 'Trivandrum' },
-  { src: ShireBgImg, name: 'Shire', place: 'Udupi' },
-  { src: CanaanBgImg, name: 'Canaan', place: 'Trivandrum' },
-  { src: HavenBgImg, name: 'Haven', place: 'Manvilla' },
+  {
+    src: getCloudinaryUrl('assets/images/sanchi.jpg'),
+    name: 'Sanchi Bags',
+    place: 'Trivandrum',
+  },
+  {
+    src: getCloudinaryUrl('assets/images/shire.jpg'),
+    name: 'Shire',
+    place: 'Udupi',
+  },
+  {
+    src: getCloudinaryUrl('assets/images/canaan.jpg'),
+    name: 'Canaan',
+    place: 'Trivandrum',
+  },
+  {
+    src: getCloudinaryUrl('assets/images/haven.jpg'),
+    name: 'Haven',
+    place: 'Manvilla',
+  },
 ];
 
 const OurWorkCarousel: React.FC = () => {
@@ -53,7 +66,6 @@ const OurWorkCarousel: React.FC = () => {
                     fill
                     alt={`${itm.name} Background`}
                     className="rounded-md object-cover md:rounded-xl"
-                    placeholder="blur"
                   />
 
                   {/* Text Content */}

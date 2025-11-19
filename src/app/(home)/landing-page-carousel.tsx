@@ -13,21 +13,16 @@ import {
   OpacityCarouselSlide,
 } from '~/components/opacity-carousel';
 
+import { getCloudinaryUrl } from '~/utils/cloudinary';
 import { cn } from '~/utils/cn';
-
-import landingPagePortfolioHouse1 from '~/assets/images/landing-page-portfolio-house-1.png';
-import landingPagePortfolioHouse2 from '~/assets/images/landing-page-portfolio-house-2.png';
-import landingPagePortfolioHouse3 from '~/assets/images/landing-page-portfolio-house-3.png';
-import landingPagePortfolioHouse4 from '~/assets/images/landing-page-portfolio-house-4.jpg';
-import landingPagePortfolioHouse5 from '~/assets/images/landing-page-portfolio-house-5.png';
 
 function LandingPageCarousel() {
   const images = [
-    landingPagePortfolioHouse1,
-    landingPagePortfolioHouse2,
-    landingPagePortfolioHouse3,
-    landingPagePortfolioHouse4,
-    landingPagePortfolioHouse5,
+    getCloudinaryUrl('assets/images/landing-page-portfolio-house-1.png'),
+    getCloudinaryUrl('assets/images/landing-page-portfolio-house-2.png'),
+    getCloudinaryUrl('assets/images/landing-page-portfolio-house-3.png'),
+    getCloudinaryUrl('assets/images/landing-page-portfolio-house-4.jpg'),
+    getCloudinaryUrl('assets/images/landing-page-portfolio-house-5.png'),
   ] as const;
 
   return (
@@ -36,10 +31,12 @@ function LandingPageCarousel() {
         <OpacityCarouselContainer>
           {images.map((itm) => {
             return (
-              <OpacityCarouselSlide key={itm.src}>
+              <OpacityCarouselSlide key={itm}>
                 <Image
                   src={itm}
                   alt="Portfolio image"
+                  width={320}
+                  height={208}
                   className="h-52 w-80 overflow-hidden rounded-[30px] border-[5px] border-[#EDDED4] object-cover"
                   style={{
                     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.2)',

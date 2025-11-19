@@ -27,11 +27,12 @@ function AchievementCard(
       <Image
         src={image}
         alt="Achievement photo"
+        height={450}
+        width={450}
         className={cn(
           achievementsStyles.achievement_card_image,
           'aspect-video',
         )}
-        placeholder="blur"
         style={{
           objectFit: isMobileFill ? 'fill' : 'cover',
           objectPosition: isMobileFill ? 'center' : 'center',

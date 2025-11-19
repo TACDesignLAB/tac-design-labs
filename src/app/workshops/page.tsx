@@ -2,30 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { getOptimizedBackgroundImage } from '~/utils/background-image-optimizer';
+import { getCloudinaryUrl } from '~/utils/cloudinary';
 import { cn } from '~/utils/cn';
-
-import Workshope7 from '~/assets/images/about-us-page-image-15.jpg';
-import buttonBackground from '~/assets/images/button-background.png';
-import workshopHeaderBackground from '~/assets/images/workshop_bg_header_2.jpg';
-import Workshope3 from '~/assets/images/workshop_image1.jpg';
-import Workshope4 from '~/assets/images/workshop_image2.jpg';
-import Workshope5 from '~/assets/images/workshop_image3.jpg';
-import bambooWorkshop1 from '~/assets/images/workshop-bamboo-1.jpg';
-import bambooWorkshop2 from '~/assets/images/workshop-bamboo-2.jpg';
-import bambooWorkshop3 from '~/assets/images/workshop-bamboo-3.jpg';
-import workshopWebBanner from '~/assets/images/workshop-banner-web.png';
-import brickWorkshop1 from '~/assets/images/workshop-brick-1.jpeg';
-import brickWorkshop2 from '~/assets/images/workshop-brick-2.jpeg';
-import brickWorkshop3 from '~/assets/images/workshop-brick-3.jpeg';
-import workshopCta from '~/assets/images/workshop-cta.jpg';
-import mudWorkshop1 from '~/assets/images/workshop-mud-1.jpeg';
-import mudWorkshop2 from '~/assets/images/workshop-mud-2.jpeg';
-import mudWorkshop3 from '~/assets/images/workshop-mud-3.jpeg';
-import workshopPageBackground from '~/assets/images/workshop-page-background.png';
-import Workshope6 from '~/assets/images/Workshop4.jpg';
-import Workshope8 from '~/assets/images/workshop6.jpg';
-import Workshopemobile from '~/assets/images/workshopbgmobiel.jpg';
 
 import DesktopCompletedWorkshopsCarousel from './desktop-completed-workshops-carousel';
 import MobileCompletedWorkshopsCarousel from './mobile-completed-workshops-carousel';
@@ -33,40 +11,55 @@ import { WorkshopsMobileCarousel } from './workshops-carousel';
 import workshopStyles from './workshops-styles.module.css';
 
 const mudWorkshopImages = [
-  { src: mudWorkshop1, alt: 'Mud Workshop Image 1' },
-  { src: mudWorkshop2, alt: 'Mud Workshop Image 2' },
-  { src: mudWorkshop3, alt: 'Mud Workshop Image 3' },
+  {
+    src: getCloudinaryUrl('assets/images/workshop-mud-1.jpeg'),
+    alt: 'Mud Workshop Image 1',
+  },
+  {
+    src: getCloudinaryUrl('assets/images/workshop-mud-2.jpeg'),
+    alt: 'Mud Workshop Image 2',
+  },
+  {
+    src: getCloudinaryUrl('assets/images/workshop-mud-3.jpeg'),
+    alt: 'Mud Workshop Image 3',
+  },
 ];
 
 const bambooWorkshopImages = [
-  { src: bambooWorkshop1, alt: 'Bamboo Workshop Image 1' },
-  { src: bambooWorkshop2, alt: 'Bamboo Workshop Image 2' },
-  { src: bambooWorkshop3, alt: 'Bamboo Workshop Image 3' },
+  {
+    src: getCloudinaryUrl('assets/images/workshop-bamboo-1.jpg'),
+    alt: 'Bamboo Workshop Image 1',
+  },
+  {
+    src: getCloudinaryUrl('assets/images/workshop-bamboo-2.jpg'),
+    alt: 'Bamboo Workshop Image 2',
+  },
+  {
+    src: getCloudinaryUrl('assets/images/workshop-bamboo-3.jpg'),
+    alt: 'Bamboo Workshop Image 3',
+  },
 ];
 
 const brickWorkshopImages = [
-  { src: brickWorkshop1, alt: 'Brick Workshop Image 1' },
-  { src: brickWorkshop2, alt: 'Brick Workshop Image 2' },
-  { src: brickWorkshop3, alt: 'Brick Workshop Image 3' },
+  {
+    src: getCloudinaryUrl('assets/images/workshop-brick-1.jpeg'),
+    alt: 'Brick Workshop Image 1',
+  },
+  {
+    src: getCloudinaryUrl('assets/images/workshop-brick-2.jpeg'),
+    alt: 'Brick Workshop Image 2',
+  },
+  {
+    src: getCloudinaryUrl('assets/images/workshop-brick-3.jpeg'),
+    alt: 'Brick Workshop Image 3',
+  },
 ];
 
 const Workshops = () => {
-  const optimizedButtonBackground = getOptimizedBackgroundImage({
-    src: buttonBackground.src,
-    width: buttonBackground.width,
-    height: buttonBackground.height,
-  });
-  const optimizedWorkshopPageBackground = getOptimizedBackgroundImage({
-    src: workshopPageBackground.src,
-    width: workshopPageBackground.width,
-    height: workshopPageBackground.height,
-  });
+  const optimizedButtonBackground = `url("${getCloudinaryUrl('assets/images/button-background.png')}")`;
+  const optimizedWorkshopPageBackground = `url("${getCloudinaryUrl('assets/images/workshop-page-background.png')}")`;
 
-  const optimizedWorkshopCtaBackground = getOptimizedBackgroundImage({
-    src: workshopCta.src,
-    width: workshopCta.width,
-    height: workshopCta.height,
-  });
+  const optimizedWorkshopCtaBackground = `url("${getCloudinaryUrl('assets/images/workshop-cta.jpg')}")`;
   return (
     <div
       className="max-w-full bg-[#E9D0B7] bg-repeat font-primary"
@@ -77,14 +70,14 @@ const Workshops = () => {
       <div className="mx-auto flex h-auto flex-col lg:flex-row">
         <div className="relative flex-shrink-0 lg:w-[35%]">
           <Image
-            src={workshopHeaderBackground}
+            src={getCloudinaryUrl('assets/images/workshop_bg_header_2.jpg')}
             alt="Workshops Header Background"
             width={600}
             height={300}
             className="hidden h-full w-full object-cover lg:flex"
           />
           <Image
-            src={Workshopemobile}
+            src={getCloudinaryUrl('assets/images/workshopbgmobiel.jpg')}
             alt="Workshops Header Background"
             width={600}
             height={300}
@@ -103,7 +96,7 @@ const Workshops = () => {
 
         <div className="relative h-full lg:w-[65%]">
           <Image
-            src={workshopWebBanner}
+            src={getCloudinaryUrl('assets/images/workshop-banner-web.png')}
             alt="Workshop Gallery"
             width={840}
             height={500}
@@ -173,7 +166,7 @@ const Workshops = () => {
           <div className="mt-5 grid w-full grid-cols-2 gap-2 lg:w-[100%] lg:grid-cols-3 xl:gap-0">
             <div className="col-span-1 overflow-hidden rounded-xl drop-shadow-xl xl:p-3">
               <Image
-                src={Workshope3}
+                src={getCloudinaryUrl('assets/images/workshop_image1.jpg')}
                 alt="Workshop Image 1"
                 width={500}
                 height={500}
@@ -182,7 +175,7 @@ const Workshops = () => {
             </div>
             <div className="col-span-1 overflow-hidden rounded-xl drop-shadow-xl xl:p-3">
               <Image
-                src={Workshope4}
+                src={getCloudinaryUrl('assets/images/workshop_image2.jpg')}
                 alt="Workshop Image 2"
                 width={500}
                 height={500}
@@ -191,7 +184,9 @@ const Workshops = () => {
             </div>
             <div className="col-span-2 overflow-hidden rounded-xl drop-shadow-xl lg:col-span-1 xl:p-3">
               <Image
-                src={Workshope7}
+                src={getCloudinaryUrl(
+                  'assets/images/about-us-page-image-15.jpg',
+                )}
                 alt="Workshop Image 3"
                 width={500}
                 height={500}
@@ -270,7 +265,7 @@ const Workshops = () => {
               >
                 <div className="relative aspect-video h-full w-full lg:aspect-[5/3.5] xl:aspect-[2/1]">
                   <Image
-                    src={Workshope6}
+                    src={getCloudinaryUrl('assets/images/Workshop4.jpg')}
                     alt="Lecture Image 1"
                     fill
                     className="rounded-xl border-[2.5px] border-[#F0E0D6] object-cover shadow-md drop-shadow-xl"
@@ -278,7 +273,7 @@ const Workshops = () => {
                 </div>
                 <div className="w-ful relative aspect-video h-full lg:aspect-[5/3.5] xl:aspect-[2/1]">
                   <Image
-                    src={Workshope5}
+                    src={getCloudinaryUrl('assets/images/workshop_image3.jpg')}
                     alt="Lecture Image 2"
                     fill
                     className="rounded-xl border-[2.5px] border-[#F0E0D6] object-cover shadow-md drop-shadow-xl"
@@ -286,7 +281,7 @@ const Workshops = () => {
                 </div>
                 <div className="relative aspect-video h-full w-full lg:aspect-[5/3.5] xl:aspect-[2/1]">
                   <Image
-                    src={Workshope8}
+                    src={getCloudinaryUrl('assets/images/workshop6.jpg')}
                     alt="Lecture Image 3"
                     fill
                     className="rounded-xl border-[2.5px] border-[#F0E0D6] object-cover shadow-md drop-shadow-xl"
@@ -324,7 +319,7 @@ const Workshops = () => {
             <div className="mb-8 hidden grid-cols-1 gap-2 md:grid md:grid-cols-3 md:gap-1 md:px-10 lg:gap-4">
               <div className="relative aspect-square">
                 <Image
-                  src={bambooWorkshop1}
+                  src={getCloudinaryUrl('assets/images/workshop-bamboo-1.jpg')}
                   alt="Workshop Group"
                   fill
                   className="rounded-[38px] border-[5px] border-[#F0E0D6] object-cover drop-shadow-xl"
@@ -332,7 +327,7 @@ const Workshops = () => {
               </div>
               <div className="relative aspect-square">
                 <Image
-                  src={bambooWorkshop2}
+                  src={getCloudinaryUrl('assets/images/workshop-bamboo-2.jpg')}
                   alt="Bamboo Structure"
                   fill
                   className="rounded-[38px] border-[5px] border-[#F0E0D6] object-cover drop-shadow-xl"
@@ -340,7 +335,7 @@ const Workshops = () => {
               </div>
               <div className="relative aspect-square">
                 <Image
-                  src={bambooWorkshop3}
+                  src={getCloudinaryUrl('assets/images/workshop-bamboo-3.jpg')}
                   alt="Hands-on Bamboo Work"
                   fill
                   className="rounded-[38px] border-[5px] border-[#F0E0D6] object-cover drop-shadow-xl"
@@ -408,7 +403,7 @@ const Workshops = () => {
             <div className="mb-8 hidden grid-cols-1 gap-2 md:grid md:grid-cols-3 md:gap-1 md:px-10 lg:gap-4">
               <div className="relative aspect-square">
                 <Image
-                  src={mudWorkshop1}
+                  src={getCloudinaryUrl('assets/images/workshop-mud-1.jpeg')}
                   alt="Workshop Group"
                   fill
                   className="rounded-[38px] border-[5px] border-[#F0E0D6] object-cover drop-shadow-xl"
@@ -416,7 +411,7 @@ const Workshops = () => {
               </div>
               <div className="relative aspect-square">
                 <Image
-                  src={mudWorkshop2}
+                  src={getCloudinaryUrl('assets/images/workshop-mud-2.jpeg')}
                   alt="Bamboo Structure"
                   fill
                   className="rounded-[38px] border-[5px] border-[#F0E0D6] object-cover drop-shadow-xl"
@@ -424,7 +419,7 @@ const Workshops = () => {
               </div>
               <div className="relative aspect-square">
                 <Image
-                  src={mudWorkshop3}
+                  src={getCloudinaryUrl('assets/images/workshop-mud-3.jpeg')}
                   alt="Hands-on Bamboo Work"
                   fill
                   className="rounded-[38px] border-[5px] border-[#F0E0D6] object-cover drop-shadow-xl"
@@ -489,7 +484,7 @@ const Workshops = () => {
             <div className="mb-8 hidden grid-cols-1 gap-2 md:grid md:grid-cols-3 md:gap-1 md:px-10 lg:gap-4">
               <div className="relative aspect-square">
                 <Image
-                  src={brickWorkshop1}
+                  src={getCloudinaryUrl('assets/images/workshop-brick-1.jpeg')}
                   alt="Workshop Group"
                   fill
                   className="rounded-[38px] border-[5px] border-[#F0E0D6] object-cover drop-shadow-xl"
@@ -497,7 +492,7 @@ const Workshops = () => {
               </div>
               <div className="relative aspect-square">
                 <Image
-                  src={brickWorkshop2}
+                  src={getCloudinaryUrl('assets/images/workshop-brick-2.jpeg')}
                   alt="Bamboo Structure"
                   fill
                   className="rounded-[38px] border-[5px] border-[#F0E0D6] object-cover drop-shadow-xl"
@@ -505,7 +500,7 @@ const Workshops = () => {
               </div>
               <div className="relative aspect-square">
                 <Image
-                  src={brickWorkshop3}
+                  src={getCloudinaryUrl('assets/images/workshop-brick-3.jpeg')}
                   alt="Hands-on Bamboo Work"
                   fill
                   className="rounded-[38px] border-[5px] border-[#F0E0D6] object-cover drop-shadow-xl"

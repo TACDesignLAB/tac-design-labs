@@ -3,12 +3,8 @@ import Link from 'next/link';
 
 import { env } from '~/env';
 
-import { getOptimizedBackgroundImage } from '~/utils/background-image-optimizer';
+import { getCloudinaryUrl } from '~/utils/cloudinary';
 import { getPlaceholderImage } from '~/utils/get-placeholder-image';
-
-import OurWorkBgButton from '~/assets/images/button-background.png';
-import mainBlogsBackground from '~/assets/images/contact-us-bg.png';
-import designDreamDeliverBG from '~/assets/images/design-dream-deliver-bg.jpg';
 
 import { listBlogs } from '~/services/list-blogs';
 
@@ -16,11 +12,8 @@ import { BlogCard } from './components/blog-card';
 import NoBlogFound from './components/no-blog-found';
 
 async function BlogMainPage() {
-  const optimizedMainBlogsBackground = getOptimizedBackgroundImage({
-    src: mainBlogsBackground.src,
-    width: mainBlogsBackground.width,
-    height: mainBlogsBackground.height,
-  });
+  const optimizedMainBlogsBackground = `url("${getCloudinaryUrl('assets/images/contact-us-bg.png')}")`;
+
   const blogsList = await listBlogs();
 
   return (
@@ -67,16 +60,9 @@ async function BlogMainPage() {
 }
 
 const ConsultationCTA = () => {
-  const optimizedBG = getOptimizedBackgroundImage({
-    src: designDreamDeliverBG.src,
-    width: designDreamDeliverBG.width,
-    height: designDreamDeliverBG.height,
-  });
-  const optimizedOurWorkBgButton = getOptimizedBackgroundImage({
-    src: OurWorkBgButton.src,
-    width: OurWorkBgButton.width,
-    height: OurWorkBgButton.height,
-  });
+  const optimizedBG = `url("${getCloudinaryUrl('assets/images/design-dream-deliver-bg.jpg')}")`;
+
+  const optimizedOurWorkBgButton = `url("${getCloudinaryUrl('assets/images/button-background.png')}")`;
   return (
     <div className="bg-white py-2">
       <div

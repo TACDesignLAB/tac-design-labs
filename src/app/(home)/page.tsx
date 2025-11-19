@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import OurWorkCarousel from '~/components/our-works-carousel';
 
-import { getOptimizedBackgroundImage } from '~/utils/background-image-optimizer';
+import { getCloudinaryUrl } from '~/utils/cloudinary';
 import { cn } from '~/utils/cn';
 
 import CloseQuoteSm from '~/assets/svgs/close-quote-sm.svg';
@@ -12,60 +12,30 @@ import LandingPageListImage from '~/assets/svgs/landing-page-list-image.svg';
 import OpenQuoteSm from '~/assets/svgs/open-quote-sm.svg';
 import OpenQuote from '~/assets/svgs/openquote.svg';
 
-import buttonBackground from '~/assets/images/button-background.png';
-import landingPageArchitectureBackground from '~/assets/images/landing-page-architecture-bg.png';
-import landingPageAshamsRavi from '~/assets/images/landing-page-ashams-ravi-potrait.jpeg';
-import landingPageAssetGrass from '~/assets/images/landing-page-asset-grass.png';
-import landingPageAssetLeaves from '~/assets/images/landing-page-asset-leaves.png';
-import landingPageDriedLeavesBackground from '~/assets/images/landing-page-dried-leaves-background.png';
-import landingPageHeroBackground from '~/assets/images/landing-page-hero-background.png';
-import landingPageHeroImage from '~/assets/images/landing-page-hero-image.png';
-import landingPagePortfolioHouse1 from '~/assets/images/landing-page-portfolio-house-1.png';
-import landingPagePortfolioHouse2 from '~/assets/images/landing-page-portfolio-house-2.png';
-import landingPagePortfolioHouse3 from '~/assets/images/landing-page-portfolio-house-3.png';
-import landingPagePortfolioHouse4 from '~/assets/images/landing-page-portfolio-house-4.jpg';
-import landingPagePortfolioHouse5 from '~/assets/images/landing-page-portfolio-house-5.png';
-import landingPageWoodenBoardBackground from '~/assets/images/landing-page-wooden-board-bg.png';
-
 import homePageStyles from './home-page-styles.module.css';
 import { LandingPageCarousel } from './landing-page-carousel';
 import styles from './landing-page-style.module.css';
 
 export default function Home() {
-  const optimizedLandingPageHeroBackground = getOptimizedBackgroundImage({
-    src: landingPageHeroBackground.src,
-    width: landingPageHeroBackground.width,
-    height: landingPageHeroBackground.height,
-  });
-
-  const optimizedLandingPageArchitectureBackground =
-    getOptimizedBackgroundImage({
-      src: landingPageArchitectureBackground.src,
-      width: landingPageArchitectureBackground.width,
-      height: landingPageArchitectureBackground.height,
-    });
-
-  const optimizedLandingPageDriedLeavesBackground = getOptimizedBackgroundImage(
-    {
-      src: landingPageDriedLeavesBackground.src,
-      width: landingPageDriedLeavesBackground.width,
-      height: landingPageDriedLeavesBackground.height,
-    },
+  const optimizedLandingPageHeroBackground = getCloudinaryUrl(
+    'assets/images/landing-page-hero-background.png',
   );
 
-  const optimizedLandingPageWoodenBoardBackground = getOptimizedBackgroundImage(
-    {
-      src: landingPageWoodenBoardBackground.src,
-      width: landingPageWoodenBoardBackground.width,
-      height: landingPageWoodenBoardBackground.height,
-    },
+  const optimizedLandingPageArchitectureBackground = getCloudinaryUrl(
+    'assets/images/landing-page-architecture-bg.png',
   );
 
-  const optimizedButtonBackground = getOptimizedBackgroundImage({
-    src: buttonBackground.src,
-    width: buttonBackground.width,
-    height: buttonBackground.height,
-  });
+  const optimizedLandingPageDriedLeavesBackground = getCloudinaryUrl(
+    'assets/images/landing-page-dried-leaves-background.png',
+  );
+
+  const optimizedLandingPageWoodenBoardBackground = getCloudinaryUrl(
+    'assets/images/landing-page-wooden-board-bg.png',
+  );
+
+  const optimizedButtonBackground = getCloudinaryUrl(
+    'assets/images/button-background.png',
+  );
 
   return (
     <div className="h-full min-h-full">
@@ -86,15 +56,21 @@ export default function Home() {
             )}
           >
             <Image
-              src={landingPageHeroImage}
-              placeholder="blur"
+              src={getCloudinaryUrl(
+                'assets/images/landing-page-hero-image.png',
+              )}
               alt="Landing page hero image "
+              width={1200}
+              height={800}
               className="h-full object-cover md:w-full md:object-contain"
             />
             <Image
-              src={landingPageAssetGrass}
-              placeholder="empty"
+              src={getCloudinaryUrl(
+                'assets/images/landing-page-asset-grass.png',
+              )}
               alt="Landing page asset grass"
+              width={200}
+              height={300}
               className="absolute -bottom-14 -right-10 h-[165px] w-[120px] object-contain drop-shadow-md md:-bottom-10 md:-left-9 md:w-[24%]"
             />
           </div>
@@ -122,10 +98,13 @@ export default function Home() {
 
       <section className="relative bg-[#EDD7C3] px-8 pb-14 text-secondary-500 md:flex md:items-center md:justify-around">
         <Image
-          src={landingPageAshamsRavi}
-          placeholder="blur"
+          src={getCloudinaryUrl(
+            'assets/images/landing-page-ashams-ravi-potrait.jpeg',
+          )}
           loading="lazy"
           alt="Ashams Ravi portrait"
+          width={300}
+          height={400}
           className="relative -top-5 h-[300px] w-[200px] rounded-3xl object-cover max-sm:mx-auto md:-top-8 md:h-[400px] md:w-[300px] md:object-cover"
         />
         <div className="relative md:w-1/2">
@@ -148,11 +127,12 @@ export default function Home() {
         </div>
 
         <Image
-          src={landingPageAssetLeaves}
+          src={getCloudinaryUrl('assets/images/landing-page-asset-leaves.png')}
           loading="lazy"
           alt="Landing page asset leaves"
-          className="absolute left-0 top-full z-10 -translate-y-1/2 object-cover drop-shadow-md"
           width={200}
+          height={200}
+          className="absolute left-0 top-full z-10 -translate-y-1/2 object-cover drop-shadow-md"
         />
       </section>
 
@@ -256,22 +236,34 @@ export default function Home() {
           <ul className="mr-16 hidden grid-cols-2 gap-x-4 gap-y-4 md:grid md:pt-7">
             <li className="col-span-2">
               <Image
-                src={landingPagePortfolioHouse1}
+                src={getCloudinaryUrl(
+                  'assets/images/landing-page-portfolio-house-1.png',
+                )}
                 alt="Portfolio image"
+                width={800}
+                height={600}
                 className="rounded-3xl border-[5px] border-[#EDDFD2] object-cover drop-shadow-xl"
               />
             </li>
             <li className="">
               <Image
-                src={landingPagePortfolioHouse2}
+                src={getCloudinaryUrl(
+                  'assets/images/landing-page-portfolio-house-2.png',
+                )}
                 alt="Portfolio image"
+                width={400}
+                height={400}
                 className="aspect-square rounded-3xl border-[5px] border-[#EDDFD2] object-cover drop-shadow-xl"
               />
             </li>
             <li className="">
               <Image
-                src={landingPagePortfolioHouse3}
+                src={getCloudinaryUrl(
+                  'assets/images/landing-page-portfolio-house-3.png',
+                )}
                 alt="Portfolio image"
+                width={400}
+                height={400}
                 className="aspect-square rounded-3xl border-[5px] border-[#EDDFD2] object-cover drop-shadow-xl"
               />
             </li>
@@ -280,15 +272,23 @@ export default function Home() {
           <ul className="col-span-2 my-4 hidden grid-cols-2 gap-x-4 gap-y-4 md:mx-16 md:grid">
             <li>
               <Image
-                src={landingPagePortfolioHouse4}
+                src={getCloudinaryUrl(
+                  'assets/images/landing-page-portfolio-house-4.jpg',
+                )}
                 alt="Portfolio image"
+                width={600}
+                height={400}
                 className="aspect-video rounded-3xl border-[5px] border-[#EDDFD2] object-cover drop-shadow-xl"
               />
             </li>
             <li>
               <Image
-                src={landingPagePortfolioHouse5}
+                src={getCloudinaryUrl(
+                  'assets/images/landing-page-portfolio-house-5.png',
+                )}
                 alt="Portfolio image"
+                width={600}
+                height={400}
                 className="aspect-video rounded-3xl border-[5px] border-[#EDDFD2] object-cover drop-shadow-xl md:object-top"
               />
             </li>

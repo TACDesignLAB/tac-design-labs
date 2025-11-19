@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { getOptimizedBackgroundImage } from '~/utils/background-image-optimizer';
+import { getCloudinaryUrl } from '~/utils/cloudinary';
 import { cn } from '~/utils/cn';
 
 import CostEstimation from '~/assets/svgs/costestimation.svg';
@@ -13,35 +13,13 @@ import PenIcon from '~/assets/svgs/pen.svg';
 import SiteVisit from '~/assets/svgs/sitevisit.svg';
 import SustainableConstruction from '~/assets/svgs/sustainableconstruction.svg';
 
-import OurWorkBgButton from '~/assets/images/button-background.png';
-import lineourprocess from '~/assets/images/lineourprocess.png';
-import lineourwork1 from '~/assets/images/lineourwork1.png';
-import lineourwork2 from '~/assets/images/lineourwork2.png';
-import lineourwork3 from '~/assets/images/lineourwork3.png';
-import lineourwork4 from '~/assets/images/lineourwork4.png';
-import lineourwork5 from '~/assets/images/lineourwork5.png';
-import lineourwork6 from '~/assets/images/lineourwork6.png';
-import OurProcessBgImg from '~/assets/images/our-process-background.png';
-import ourprocesscatbgimg from '~/assets/images/ourproccessbgimg.png';
-
 import ourProcessStyles from './our-process-styles.module.css';
 
 const OurProcess = () => {
-  const optimizedOurProcessBg = getOptimizedBackgroundImage({
-    src: OurProcessBgImg.src,
-    width: OurProcessBgImg.width,
-    height: OurProcessBgImg.height,
-  });
-  const optimizedourprocessbgimg = getOptimizedBackgroundImage({
-    src: ourprocesscatbgimg.src,
-    width: ourprocesscatbgimg.width,
-    height: ourprocesscatbgimg.height,
-  });
-  const optimizedOurWorkBgButton = getOptimizedBackgroundImage({
-    src: OurWorkBgButton.src,
-    width: OurWorkBgButton.width,
-    height: OurWorkBgButton.height,
-  });
+  const optimizedOurProcessBg = `url("${getCloudinaryUrl('assets/images/our-process-background.png')}")`;
+  const optimizedourprocessbgimg = `url("${getCloudinaryUrl('assets/images/ourproccessbgimg.png')}")`;
+  const optimizedOurWorkBgButton = `url("${getCloudinaryUrl('assets/images/button-background.png')}")`;
+
   return (
     <div className="font-primary">
       <div
@@ -91,7 +69,7 @@ const OurProcess = () => {
             </div>
             <div className="flex justify-center">
               <Image
-                src={lineourprocess}
+                src={getCloudinaryUrl('assets/images/lineourprocess.png')}
                 alt="logo"
                 className="h-12 w-2"
                 width={50}
@@ -122,7 +100,7 @@ const OurProcess = () => {
             </div>
             <div className="flex justify-center">
               <Image
-                src={lineourprocess}
+                src={getCloudinaryUrl('assets/images/lineourprocess.png')}
                 alt="logo"
                 className="h-12 w-2"
                 width={50}
@@ -158,7 +136,7 @@ const OurProcess = () => {
             </div>
             <div className="flex justify-center">
               <Image
-                src={lineourprocess}
+                src={getCloudinaryUrl('assets/images/lineourprocess.png')}
                 alt="logo"
                 className="h-12 w-2"
                 width={50}
@@ -196,7 +174,7 @@ const OurProcess = () => {
             </div>
             <div className="flex justify-center">
               <Image
-                src={lineourprocess}
+                src={getCloudinaryUrl('assets/images/lineourprocess.png')}
                 alt="logo"
                 width={50}
                 height={50}
@@ -246,7 +224,7 @@ const OurProcess = () => {
             </div>
             <div className="flex justify-center">
               <Image
-                src={lineourprocess}
+                src={getCloudinaryUrl('assets/images/lineourprocess.png')}
                 alt="logo"
                 className="h-12 w-2"
                 width={50}
@@ -274,7 +252,7 @@ const OurProcess = () => {
             </div>
             <div className="flex justify-center">
               <Image
-                src={lineourprocess}
+                src={getCloudinaryUrl('assets/images/lineourprocess.png')}
                 alt="logo"
                 className="h-12 w-2"
                 width={50}
@@ -316,7 +294,7 @@ const OurProcess = () => {
                   className="min-h-[120px] min-w-[120px]"
                 />
                 <Image
-                  src={lineourwork1}
+                  src={getCloudinaryUrl('assets/images/lineourwork1.png')}
                   alt="logo"
                   width={50}
                   height={50}
@@ -351,7 +329,7 @@ const OurProcess = () => {
                   className="min-h-[120px] min-w-[120px]"
                 />
                 <Image
-                  src={lineourwork2}
+                  src={getCloudinaryUrl('assets/images/lineourwork2.png')}
                   alt="logo"
                   width={50}
                   height={50}
@@ -381,7 +359,7 @@ const OurProcess = () => {
                   className="min-h-[120px] min-w-[120px]"
                 />
                 <Image
-                  src={lineourwork3}
+                  src={getCloudinaryUrl('assets/images/lineourwork3.png')}
                   alt="logo"
                   width={50}
                   height={50}
@@ -418,7 +396,7 @@ const OurProcess = () => {
                   className="min-h-[120px] min-w-[120px]"
                 />
                 <Image
-                  src={lineourwork4}
+                  src={getCloudinaryUrl('assets/images/lineourwork4.png')}
                   alt="logo"
                   width={50}
                   height={50}
@@ -454,7 +432,7 @@ const OurProcess = () => {
                   className="min-h-[120px] min-w-[120px]"
                 />
                 <Image
-                  src={lineourwork5}
+                  src={getCloudinaryUrl('assets/images/lineourwork5.png')}
                   alt="logo"
                   width={50}
                   height={50}
@@ -503,7 +481,7 @@ const OurProcess = () => {
                   className="min-h-[120px] min-w-[120px]"
                 />
                 <Image
-                  src={lineourwork6}
+                  src={getCloudinaryUrl('assets/images/lineourwork6.png')}
                   alt="logo"
                   width={50}
                   height={50}

@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-import { getOptimizedBackgroundImage } from '~/utils/background-image-optimizer';
+import { getCloudinaryUrl } from '~/utils/cloudinary';
 
 import Address from '~/assets/svgs/address.svg';
 import Clock from '~/assets/svgs/clock.svg';
@@ -12,15 +12,8 @@ import Logo from '~/assets/svgs/logo.svg';
 import Phone from '~/assets/svgs/phone.svg';
 import YoutubeLogo from '~/assets/svgs/youtube.svg';
 
-import contactPlace from '~/assets/images/contact-image.jpeg';
-import contactUsBg from '~/assets/images/contact-us-bg.png';
-
 const ContactUsPage = () => {
-  const optimizedContactUsPageBackground = getOptimizedBackgroundImage({
-    src: contactUsBg.src,
-    width: contactUsBg.width,
-    height: contactUsBg.height,
-  });
+  const optimizedContactUsPageBackground = `url("${getCloudinaryUrl('assets/images/contact-us-bg.png')}")`;
   return (
     <div
       className="bg-[#EDD7C3] p-9 font-primary md:px-24 md:py-20"
@@ -105,8 +98,10 @@ const ContactUsPage = () => {
         <div className="mt-4 flex max-w-3xl flex-col items-center gap-9 self-end">
           <Image
             className="aspect-video w-full rounded-[20px] border-4 border-surface-500 object-cover [boxShadow:0px_4px_4px_0px_#00000040]"
-            src={contactPlace}
+            src={getCloudinaryUrl('assets/images/contact-image.jpeg')}
             alt="Contact Us"
+            width={800}
+            height={450}
           />
           <div className="flex items-center gap-2">
             <div className="h-11 w-11 object-cover md:h-16 md:w-16">

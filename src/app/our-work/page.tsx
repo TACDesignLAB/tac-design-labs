@@ -2,33 +2,18 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { getOptimizedBackgroundImage } from '~/utils/background-image-optimizer';
-
-import OurWorkBgButton from '~/assets/images/button-background.png';
-import CanaanBgImg from '~/assets/images/canaan.jpg';
-import HavenBgImg from '~/assets/images/haven.jpg';
-import landingPageArchitectureBackground from '~/assets/images/our-work-bg-img.png';
-import OurWorkCta from '~/assets/images/our-work-cta.png';
-import SanchiBgImg from '~/assets/images/sanchi.jpg';
-import ShireBgImg from '~/assets/images/shire.jpg';
+import { getCloudinaryUrl } from '~/utils/cloudinary';
 
 const OurWork = () => {
-  const optimizedLandingPageArchitectureBackground =
-    getOptimizedBackgroundImage({
-      src: landingPageArchitectureBackground.src,
-      width: landingPageArchitectureBackground.width,
-      height: landingPageArchitectureBackground.height,
-    });
-  const optimizedWorkShopBgImg = getOptimizedBackgroundImage({
-    src: OurWorkCta.src,
-    width: OurWorkCta.width,
-    height: OurWorkCta.height,
-  });
-  const optimizedOurWorkBgButton = getOptimizedBackgroundImage({
-    src: OurWorkBgButton.src,
-    width: OurWorkBgButton.width,
-    height: OurWorkBgButton.height,
-  });
+  const optimizedLandingPageArchitectureBackground = getCloudinaryUrl(
+    'assets/images/our-work-bg-img.png',
+  );
+  const optimizedWorkShopBgImg = getCloudinaryUrl(
+    'assets/images/our-work-cta.png',
+  );
+  const optimizedOurWorkBgButton = getCloudinaryUrl(
+    'assets/images/button-background.png',
+  );
 
   return (
     <div
@@ -56,7 +41,7 @@ const OurWork = () => {
               <div className="group relative aspect-[16/9] transform rounded-2xl border-8 border-[#F3F5E5] shadow-custom transition-transform duration-300 ease-out hover:scale-105 hover:cursor-pointer">
                 <div className="absolute inset-0 z-10 rounded-2xl bg-gradient-to-t from-[#000000] to-transparent opacity-70 mix-blend-multiply transition delay-150 duration-300 ease-in-out group-hover:opacity-20"></div>
                 <Image
-                  src={CanaanBgImg}
+                  src={getCloudinaryUrl('assets/images/canaan.jpg')}
                   alt="CanaanBgImg"
                   fill
                   className="rounded-xl object-cover"
@@ -78,7 +63,7 @@ const OurWork = () => {
               <div className="group relative aspect-[16/9] transform rounded-2xl border-8 border-[#F3F5E5] shadow-custom transition-transform duration-300 ease-out hover:scale-105 hover:cursor-pointer">
                 <div className="absolute inset-0 z-10 rounded-2xl bg-gradient-to-t from-[#000000] to-transparent opacity-70 mix-blend-multiply transition delay-150 duration-300 ease-in-out group-hover:opacity-20"></div>
                 <Image
-                  src={ShireBgImg}
+                  src={getCloudinaryUrl('assets/images/shire.jpg')}
                   fill
                   alt="ShireBgImg"
                   className="rounded-xl object-cover"
@@ -100,7 +85,7 @@ const OurWork = () => {
               <div className="group relative aspect-[16/9] transform rounded-2xl border-8 border-[#F3F5E5] shadow-custom transition-transform duration-300 ease-out hover:scale-105 hover:cursor-pointer">
                 <div className="absolute inset-0 z-10 rounded-2xl bg-gradient-to-t from-[#000000] to-transparent opacity-70 mix-blend-multiply transition delay-150 duration-300 ease-in-out group-hover:opacity-20"></div>
                 <Image
-                  src={SanchiBgImg}
+                  src={getCloudinaryUrl('assets/images/sanchi.jpg')}
                   fill
                   alt="SanchiBgImg"
                   className="rounded-xl object-cover"
@@ -122,7 +107,7 @@ const OurWork = () => {
               <div className="group relative aspect-[16/9] transform rounded-2xl border-8 border-[#F3F5E5] shadow-custom transition-transform duration-300 ease-out hover:scale-105 hover:cursor-pointer">
                 <div className="absolute inset-0 z-10 rounded-2xl bg-gradient-to-t from-[#000000] to-transparent opacity-70 mix-blend-multiply transition delay-150 duration-300 ease-in-out group-hover:opacity-20"></div>
                 <Image
-                  src={HavenBgImg}
+                  src={getCloudinaryUrl('assets/images/haven.jpg')}
                   fill
                   alt="HavenBgImg"
                   className="rounded-xl object-cover"

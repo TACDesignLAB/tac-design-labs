@@ -35,6 +35,8 @@ const WorkshopsMobileCarousel: React.FC<CarouselProps> = ({
               <Image
                 src={image.src}
                 alt={image.alt ?? 'Carousel image'}
+                width={300}
+                height={300}
                 className="h-[300px] w-[300px] overflow-hidden rounded-[30px] border-[5px] border-[#EDDED4] object-cover"
                 style={{
                   boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.2)',

@@ -40,8 +40,9 @@ function ImageGrid(props: ImageGridProps) {
           imageGridStyles.mobile_image,
         )}
         src={mobileImage}
-        placeholder="blur"
         alt="Grid mobile image"
+        width={800}
+        height={600}
       />
       <Image
         className={cn(
@@ -50,8 +51,9 @@ function ImageGrid(props: ImageGridProps) {
           centerObjectPosition ? imageGridStyles.center_object_position : '',
         )}
         src={mainImage}
-        placeholder="blur"
         alt="Grid main image"
+        width={800}
+        height={600}
       />
       <Image
         className={cn(
@@ -59,8 +61,9 @@ function ImageGrid(props: ImageGridProps) {
           imageGridStyles.sub_image_1,
         )}
         src={subImage1}
-        placeholder="blur"
         alt="Grid sub image 1"
+        width={800}
+        height={600}
       />
       <Image
         className={cn(
@@ -68,8 +71,9 @@ function ImageGrid(props: ImageGridProps) {
           imageGridStyles.sub_image_2,
         )}
         src={subImage2}
-        placeholder="blur"
         alt="Grid sub image 2"
+        width={800}
+        height={600}
       />
     </div>
   );

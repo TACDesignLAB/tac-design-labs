@@ -4,81 +4,61 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { getOptimizedBackgroundImage } from '~/utils/background-image-optimizer';
-
-import brickButton from '~/assets/images/button-background.png';
-import teamBg from '~/assets/images/our-team-bg.png';
-import ourTemaCta from '~/assets/images/our-team-cta.png';
-import teamPicture from '~/assets/images/TAC-team-picture.jpg';
-import akshay from '~/assets/profile-images/akshay.jpg';
-import ashams from '~/assets/profile-images/ashams.jpg';
-import aswathi from '~/assets/profile-images/aswathy.jpg';
-import priya from '~/assets/profile-images/priya.jpeg';
-import vijayan from '~/assets/profile-images/vijayan.jpg';
-
-import type { StaticImageData } from 'next/image';
+import { getCloudinaryUrl } from '~/utils/cloudinary';
 
 interface TeamMember {
   name: string;
   summary: string;
   position: string;
-  picture: StaticImageData;
+  picture: string;
 }
 
 interface TeamCardDetail {
-  picture: StaticImageData;
+  picture: string;
   summary: string;
 }
 
-const optimizedButton = getOptimizedBackgroundImage({
-  src: brickButton.src,
-  width: brickButton.width,
-  height: brickButton.height,
-});
+const optimizedButton = `url("${getCloudinaryUrl('assets/images/button-background.png')}")`;
 
 const teamMemberDetails: TeamMember[] = [
   {
     name: 'AR. ASHAMS RAVI',
     summary:
       'With over seven years of experience in sustainable architecture, Ar. Ashams Ravi is a dedicated professional. He graduated from the Prime College of Architecture and Planning, Nagapattinam, and began his career at the Centre of Science and Technology for Rural Development (COSTFORD), Trivandrum, where he worked from 2017 to 2022. Under the mentorship of Ar. P.B. Sajan, a close disciple of Master Architect Laurie Baker, he honed his skills in designing and executing over 100 residential units and other government projects using sustainable technologies. During this period, he also served as a faculty member at the Laurie Baker Centre for Habitat Studies, training architects and students in sustainable architecture. <br/><br/> Ar. Ashams Ravi has actively contributed to the Kerala Institute of Local Administration – Centre for Human Resource Development (KILA-CHRD), where he provided training on sustainable and cost-effective technologies to various PMAY(a) functionaries. He has delivered talks and workshops on sustainable architecture at numerous architecture schools across India and was a speaker at TEDx Countdown on Sustainable Architecture in November 2021. His personal commitment to sustainable design is evident in his own home, built using reused and renewable materials, which earned him the HUDCO National Design Award (2021-2022) in the Green Building category. Today, he is recognized as an inspirational figure in the field of sustainable architecture.',
-    picture: ashams,
+    picture: getCloudinaryUrl('assets/profile-images/ashams.jpg'),
     position: 'Founder / Principal Architect',
   },
   {
     name: 'AR. AKSHAY RAVI',
-    summary: `With a Bachelor’s Degree in Architecture from ITM University, Gwalior, Akshay Ravi brings a wealth of knowledge and over three years of practical experience to TAC Design LAB. As a Junior Architect and Site Architect at COSTFORD, he has contributed to a variety of residential, commercial, and office building projects across both government and private sectors. Akshay’s work is characterized by a deep commitment to sustainability, integrating eco-friendly practices into conventional design frameworks.<br/><br/>Known for his creativity, attention to detail, and passion for architectural innovation, Akshay is driven by a desire to make a positive impact through his work. His approach to design is informed by thorough research, functional zoning, and architectural detailing. Outside of his professional life, Akshay is an avid traveler, drawing inspiration from his journeys to enhance his creative process.
+    summary: `With a Bachelor's Degree in Architecture from ITM University, Gwalior, Akshay Ravi brings a wealth of knowledge and over three years of practical experience to TAC Design LAB. As a Junior Architect and Site Architect at COSTFORD, he has contributed to a variety of residential, commercial, and office building projects across both government and private sectors. Akshay's work is characterized by a deep commitment to sustainability, integrating eco-friendly practices into conventional design frameworks.<br/><br/>Known for his creativity, attention to detail, and passion for architectural innovation, Akshay is driven by a desire to make a positive impact through his work. His approach to design is informed by thorough research, functional zoning, and architectural detailing. Outside of his professional life, Akshay is an avid traveler, drawing inspiration from his journeys to enhance his creative process.
     `,
-    picture: akshay,
+    picture: getCloudinaryUrl('assets/profile-images/akshay.jpg'),
     position: 'Principal Architect',
   },
   {
     name: 'SARADHA PRIYA C S',
     summary: `Having over seven years of experience in civil engineering and project management, Saradha Priya C S is a committed professional at TAC Design LAB. She holds a B.Tech in Civil Engineering and has a rich background working with COSTFORD (Centre of Science & Technology for Rural Development) in Thiruvananthapuram. During her tenure at COSTFORD, she played a crucial role in various government projects, including the setup of office facilities, market improvements, and community health center renovations.<br/><br/>Since joining TAC Design LAB in April 2023, Saradha has been instrumental in managing and executing projects such as the renovation of residential buildings and the construction of eco-friendly homes using reused materials. Her expertise in site supervision, material planning, and bill certification ensures the seamless execution of every project. Saradha's commitment to sustainable development and meticulous attention to detail make her an invaluable asset to the team.
     `,
-    picture: priya,
+    picture: getCloudinaryUrl('assets/profile-images/priya.jpeg'),
     position: 'Project Manager',
   },
   {
     name: 'ABHIJITH VIJAYAN',
-    summary: `A Project Engineer with four years of expertise, Abhijith Vijayan has led numerous projects from inception to completion. He is a graduate of Mohandas College of Engineering and Technology, Trivandrum, holding a Bachelor of Technology in Civil Engineering. Abhijith has demonstrated expertise in managing budgets, resulting in increased production efficiency, reduced costs, and revenue growth. He is adept at identifying and mitigating project risks, ensuring on-time and within-budget delivery.<br/><br/>In his previous roles, Abhijith worked as a Site Engineer at COSTFORD (Centre of Science and Technology for Rural Development) in Trivandrum, where he contributed to housing projects for the SC community at Venganoor Grama Panchayath and other residential projects. He also gained valuable experience at SR Electricals, managing the construction of petrol pumps. His commitment to safety is evident in the development and implementation of a project safety plan that led to zero safety incidents during the project timeline. Abhijith’s technical proficiency and strong leadership skills make him an essential part of the TAC Design LAB team.
+    summary: `A Project Engineer with four years of expertise, Abhijith Vijayan has led numerous projects from inception to completion. He is a graduate of Mohandas College of Engineering and Technology, Trivandrum, holding a Bachelor of Technology in Civil Engineering. Abhijith has demonstrated expertise in managing budgets, resulting in increased production efficiency, reduced costs, and revenue growth. He is adept at identifying and mitigating project risks, ensuring on-time and within-budget delivery.<br/><br/>In his previous roles, Abhijith worked as a Site Engineer at COSTFORD (Centre of Science and Technology for Rural Development) in Trivandrum, where he contributed to housing projects for the SC community at Venganoor Grama Panchayath and other residential projects. He also gained valuable experience at SR Electricals, managing the construction of petrol pumps. His commitment to safety is evident in the development and implementation of a project safety plan that led to zero safety incidents during the project timeline. Abhijith's technical proficiency and strong leadership skills make him an essential part of the TAC Design LAB team.
     `,
-    picture: vijayan,
+    picture: getCloudinaryUrl('assets/profile-images/vijayan.jpg'),
     position: 'Project Engineer',
   },
   {
     name: 'ASWATHY U V',
     summary: `She is a proficient Architectural Assistant at TAC Design LAB with a solid background in interior design and architectural drafting. Aswathy holds a Diploma in Interior Designing from CADPOINT, Trivandrum, along with an Architectural Draughtsman certification from Govt ITI for Women, Kazhakuttam, where she excelled with a 94.5% score. Aswathy's academic background is complemented by hands-on experience in residential and office building projects, making her a valuable asset to the team.`,
-    picture: aswathi,
+    picture: getCloudinaryUrl('assets/profile-images/aswathy.jpg'),
     position: 'Architectural Assistant',
   },
 ];
 
 const TeamPage = () => {
-  const optimizedTeamBackground = getOptimizedBackgroundImage({
-    src: teamBg.src,
-    width: teamBg.width,
-    height: teamBg.height,
-  });
+  const optimizedTeamBackground = `url("${getCloudinaryUrl('assets/images/our-team-bg.png')}")`;
 
   return (
     <div>
@@ -89,13 +69,13 @@ const TeamPage = () => {
         }}
       >
         <TeamCard
-          picture={teamPicture}
+          picture={getCloudinaryUrl('assets/images/TAC-team-picture.jpg')}
           summary="Our team is a collective of visionary architects, designers, and
         engineers dedicated to creating spaces that honor tradition while
         embracing modern culture. We collaborate closely, each member
         contributing their unique expertise to move projects forward and bring
         our innovative designs to life. With a shared passion for sustainable
-        architecture, we’re excited to introduce you to the talented individuals
+        architecture, we're excited to introduce you to the talented individuals
         who make our work possible."
         />
 
@@ -112,7 +92,7 @@ const TeamPage = () => {
         <div
           className="mt-20 border-y-8 border-white bg-[#420C03]/70 bg-cover p-8 text-center text-2xl text-white md:p-20 md:text-4xl"
           style={{
-            backgroundImage: getOptimizedBackgroundImage(ourTemaCta),
+            backgroundImage: `url("${getCloudinaryUrl('assets/images/our-team-cta.png')}")`,
           }}
         >
           <h1 className="mb-6 sm:text-balance">
@@ -144,6 +124,8 @@ function TeamCard(props: TeamCardDetail) {
           src={props.picture}
           alt="team-picture"
           draggable="false"
+          width={500}
+          height={500}
         />
         <span
           className="py-8 text-justify text-sm leading-8 md:py-0 md:text-xl md:leading-10 md:tracking-[2%]"
@@ -170,6 +152,8 @@ function ProfileCard(props: TeamMember) {
         className="-mt-[40%] aspect-square w-[80%] rounded-3xl border-[6px] border-secondary-100 object-cover shadow-[0px_4px_4px_0px_#00000040] backdrop-blur-sm md:-mt-0 md:h-[300px] md:w-[300px] md:self-start"
         src={props.picture}
         alt={'profile-image'}
+        width={300}
+        height={300}
       />
       <div className="flex flex-col gap-8 p-5">
         <div className="flex flex-col gap-2 text-center md:text-left">

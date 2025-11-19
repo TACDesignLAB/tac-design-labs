@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import ImageGallery from '~/components/image-gallery';
 
-import landingPageLeavesBackground from '~/assets/images/landing-page-team-background.png';
+import { getCloudinaryUrl } from '~/utils/cloudinary';
 
 import { images, rightColImageCount, workDetails } from '../constant';
 import { shuffleImages } from '../utils';
@@ -27,7 +27,7 @@ function MainContent(props: MainContentProps) {
     <div
       className="relative max-h-full w-full bg-[#EDD7C3] pb-7 pt-5 bg-blend-luminosity lg:pb-9 lg:pt-14"
       style={{
-        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.40), rgba(255, 255, 255, 0.40)), url(${landingPageLeavesBackground.src})`,
+        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.40), rgba(255, 255, 255, 0.40)), url(${getCloudinaryUrl('assets/images/landing-page-team-background.png')})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

@@ -10,24 +10,18 @@ import {
 } from '~/components/auto-scroll-carousel';
 import OurWorkCarousel from '~/components/our-works-carousel';
 
-import { getOptimizedBackgroundImage } from '~/utils/background-image-optimizer';
-
-import career1 from '~/assets/images/career-images/career-1.jpg';
-import career2 from '~/assets/images/career-images/career-2.jpg';
-import career3 from '~/assets/images/career-images/career-3.jpg';
-import career4 from '~/assets/images/career-images/career-4.jpg';
-import career5 from '~/assets/images/career-images/career-5.jpg';
-import careerPageBackground from '~/assets/images/career-page-background.png';
-import career from '~/assets/images/career.jpg';
+import { getCloudinaryUrl } from '~/utils/cloudinary';
 
 export default function Career() {
-  const images = [career1, career2, career3, career4, career5];
+  const images = [
+    getCloudinaryUrl('assets/images/career-images/career-1.jpg'),
+    getCloudinaryUrl('assets/images/career-images/career-2.jpg'),
+    getCloudinaryUrl('assets/images/career-images/career-3.jpg'),
+    getCloudinaryUrl('assets/images/career-images/career-4.jpg'),
+    getCloudinaryUrl('assets/images/career-images/career-5.jpg'),
+  ];
 
-  const optimizedCareerPageBackground = getOptimizedBackgroundImage({
-    src: careerPageBackground.src,
-    width: careerPageBackground.width,
-    height: careerPageBackground.height,
-  });
+  const optimizedCareerPageBackground = `url("${getCloudinaryUrl('assets/images/career-page-background.png')}")`;
   return (
     <div
       className="bg-cover py-16 font-primary"
@@ -40,7 +34,7 @@ export default function Career() {
           <div
             className="h-full w-full bg-cover bg-center"
             style={{
-              backgroundImage: `url(${career.src})`,
+              backgroundImage: `url(${getCloudinaryUrl('assets/images/career.jpg')})`,
             }}
           ></div>
           <div className="absolute inset-0 flex justify-start bg-black bg-opacity-50">
@@ -86,12 +80,12 @@ export default function Career() {
                   className="basis-[60%] pb-4 pl-[20px] md:basis-[30%] md:pl-[40px]"
                 >
                   <Image
-                    src={image.src}
+                    src={image}
                     alt={`Career Image ${String(index + 1)}`}
                     className="aspect-square overflow-hidden rounded-[20px] border-[2px] border-[#F0E0D6] object-cover md:w-[100px] md:rounded-[40px] md:border-[5px]"
                     layout="responsive"
-                    width={image.width}
-                    height={image.height}
+                    width={500}
+                    height={500}
                     style={{ boxShadow: '0px 4px 4px 0px #00000040' }}
                   />
                 </AutoScrollCarouselSlide>
