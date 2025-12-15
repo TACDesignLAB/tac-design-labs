@@ -1,27 +1,27 @@
 'use client';
 
+import { detailsStore } from '~/constants/works';
 import Image from 'next/image';
 
 import ImageGallery from '~/components/image-gallery';
 
 import landingPageLeavesBackground from '~/assets/images/landing-page-team-background.png';
 
-import { images, rightColImageCount, workDetails } from '../constant';
 import { shuffleImages } from '../utils';
 import ImageSlider from './image-slider';
 import type { MainContentProps } from './model';
 
 function MainContent(props: MainContentProps) {
   const { work } = props;
-  const currentWork = workDetails[work];
+  const currentWork = detailsStore[work];
 
-  const maxImages = rightColImageCount[work];
-  const mainImages = images[work].slice(0, maxImages);
-  const extraImages = images[work].slice(maxImages);
+  const maxImages = currentWork.imageCount;
+  const mainImages = currentWork.images.slice(0, maxImages);
+  const extraImages = currentWork.images.slice(maxImages);
 
   // Function to get the first 6 images for mobile
   const getMobileImages = (index: number) =>
-    images[work].slice(index * 6, index * 6 + 6);
+    currentWork.images.slice(index * 6, index * 6 + 6);
 
   return (
     <div

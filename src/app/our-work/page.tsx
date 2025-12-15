@@ -1,16 +1,14 @@
 import React from 'react';
-import Image from 'next/image';
+import { detailsStore, projectOrder } from '~/constants/works';
 import Link from 'next/link';
 
 import { getOptimizedBackgroundImage } from '~/utils/background-image-optimizer';
 
 import OurWorkBgButton from '~/assets/images/button-background.png';
-import CanaanBgImg from '~/assets/images/canaan.jpg';
-import HavenBgImg from '~/assets/images/haven.jpg';
 import landingPageArchitectureBackground from '~/assets/images/our-work-bg-img.png';
 import OurWorkCta from '~/assets/images/our-work-cta.png';
-import SanchiBgImg from '~/assets/images/sanchi.jpg';
-import ShireBgImg from '~/assets/images/shire.jpg';
+
+import ProjectTile from './project-tile';
 
 const OurWork = () => {
   const optimizedLandingPageArchitectureBackground =
@@ -51,93 +49,9 @@ const OurWork = () => {
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-6 md:gap-12">
-          <div className="w-full md:w-[48%] lg:w-[45%] xl:w-[40%]">
-            <Link href="/our-work/canaan">
-              <div className="group relative aspect-[16/9] transform rounded-2xl border-8 border-[#F3F5E5] shadow-custom transition-transform duration-300 ease-out hover:scale-105 hover:cursor-pointer">
-                <div className="absolute inset-0 z-10 rounded-2xl bg-gradient-to-t from-[#000000] to-transparent opacity-70 mix-blend-multiply transition delay-150 duration-300 ease-in-out group-hover:opacity-20"></div>
-                <Image
-                  src={CanaanBgImg}
-                  alt="CanaanBgImg"
-                  fill
-                  className="rounded-xl object-cover"
-                />
-                <div className="absolute bottom-3 left-4 z-10 text-white">
-                  <p className="text-2xl font-bold tracking-widest md:text-4xl lg:text-[42px]">
-                    Canaan
-                  </p>
-                  <p className="text-base text-[#FCBF89] md:text-lg lg:text-xl xl:text-2xl">
-                    Trivandrum
-                  </p>
-                </div>
-              </div>
-            </Link>
-          </div>
-
-          <div className="w-full md:w-[48%] lg:w-[45%] xl:w-[40%]">
-            <Link href="/our-work/shire">
-              <div className="group relative aspect-[16/9] transform rounded-2xl border-8 border-[#F3F5E5] shadow-custom transition-transform duration-300 ease-out hover:scale-105 hover:cursor-pointer">
-                <div className="absolute inset-0 z-10 rounded-2xl bg-gradient-to-t from-[#000000] to-transparent opacity-70 mix-blend-multiply transition delay-150 duration-300 ease-in-out group-hover:opacity-20"></div>
-                <Image
-                  src={ShireBgImg}
-                  fill
-                  alt="ShireBgImg"
-                  className="rounded-xl object-cover"
-                />
-                <div className="absolute bottom-3 left-4 z-20 text-white">
-                  <p className="text-2xl font-bold tracking-widest md:text-4xl lg:text-[42px]">
-                    Shire
-                  </p>
-                  <p className="text-base text-[#FCBF89] md:text-lg lg:text-xl xl:text-2xl">
-                    Udupi
-                  </p>
-                </div>
-              </div>
-            </Link>
-          </div>
-
-          <div className="w-full md:w-[48%] lg:w-[45%] xl:w-[40%]">
-            <Link href="/our-work/sanchi-bags">
-              <div className="group relative aspect-[16/9] transform rounded-2xl border-8 border-[#F3F5E5] shadow-custom transition-transform duration-300 ease-out hover:scale-105 hover:cursor-pointer">
-                <div className="absolute inset-0 z-10 rounded-2xl bg-gradient-to-t from-[#000000] to-transparent opacity-70 mix-blend-multiply transition delay-150 duration-300 ease-in-out group-hover:opacity-20"></div>
-                <Image
-                  src={SanchiBgImg}
-                  fill
-                  alt="SanchiBgImg"
-                  className="rounded-xl object-cover"
-                />
-                <div className="absolute bottom-3 left-4 z-20 text-white">
-                  <p className="text-2xl font-bold tracking-widest md:text-4xl lg:text-[42px]">
-                    Sanchi Bags
-                  </p>
-                  <p className="text-base text-[#FCBF89] md:text-lg lg:text-xl xl:text-2xl">
-                    Trivandrum
-                  </p>
-                </div>
-              </div>
-            </Link>
-          </div>
-
-          <div className="w-full md:w-[48%] lg:w-[45%] xl:w-[40%]">
-            <Link href="/our-work/haven">
-              <div className="group relative aspect-[16/9] transform rounded-2xl border-8 border-[#F3F5E5] shadow-custom transition-transform duration-300 ease-out hover:scale-105 hover:cursor-pointer">
-                <div className="absolute inset-0 z-10 rounded-2xl bg-gradient-to-t from-[#000000] to-transparent opacity-70 mix-blend-multiply transition delay-150 duration-300 ease-in-out group-hover:opacity-20"></div>
-                <Image
-                  src={HavenBgImg}
-                  fill
-                  alt="HavenBgImg"
-                  className="rounded-xl object-cover"
-                />
-                <div className="absolute bottom-3 left-4 z-20 text-white">
-                  <p className="text-2xl font-bold tracking-widest md:text-4xl lg:text-[42px]">
-                    Haven
-                  </p>
-                  <p className="text-base text-[#FCBF89] md:text-lg lg:text-xl xl:text-2xl">
-                    Manvilla
-                  </p>
-                </div>
-              </div>
-            </Link>
-          </div>
+          {projectOrder.map((workId) => (
+            <ProjectTile key={workId} project={detailsStore[workId]} />
+          ))}
         </div>
       </div>
 

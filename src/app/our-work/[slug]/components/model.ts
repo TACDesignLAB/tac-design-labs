@@ -1,8 +1,7 @@
-import type { Work } from '../model';
+import type { Work } from '~/constants/works/models';
 
 export interface BannerProps {
   work: Work;
-  imagePath: string;
 }
 
 export interface HighlightsProps {

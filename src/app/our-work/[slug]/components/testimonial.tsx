@@ -1,10 +1,13 @@
-import { workDetails } from '../constant';
+import { detailsStore } from '~/constants/works';
+
 import type { TestimonialProps } from './model';
 
 function Testimonial(props: TestimonialProps) {
   const { work } = props;
-  const currentWork = workDetails[work];
-
+  const currentWork = detailsStore[work];
+  if (!currentWork.testimonial && !currentWork.testimonialVideo) {
+    return;
+  }
   return (
     <div
       className="relative min-h-[522px] w-full bg-cover bg-center p-4 shadow-[inset_0px_15px_4px_0px_rgba(0,0,0,0.25)] lg:min-h-[725px]"
@@ -31,7 +34,7 @@ function Testimonial(props: TestimonialProps) {
             allowFullScreen
           />
         ) : (
-          <p className="text-[24px] lg:text-[64px]">COMING SOON</p>
+          []
         )}
       </div>
     </div>

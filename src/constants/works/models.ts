@@ -1,8 +1,12 @@
+import { type StaticImageData } from 'next/image';
+
 export enum Work {
   HAVEN = 'haven',
   CANAAN = 'canaan',
   SHIRE = 'shire',
   SANCHIBAGS = 'sanchi-bags',
+  CHEMBAKASSERY = 'chembakassery',
+  MAISONSANGHAM = 'maison-sangham',
 }
 
 interface BulletPoint {
@@ -11,7 +15,10 @@ interface BulletPoint {
 }
 
 export interface WorkDetails {
+  id: Work;
+  tileImg: StaticImageData;
   title: string;
+  shortTitle?: string;
   subTitle: string;
   location: string;
   completionYear: string;
@@ -31,33 +38,13 @@ export interface WorkDetails {
   testimonialVideo: string;
   admiration: string;
   featuredVideos?: FeaturedVideo[];
-  callToAction: CallToAction;
-}
-
-export interface PageParams {
-  params: Promise<{
-    slug: Work;
-  }>;
-}
-
-export interface WorkImages {
-  [Work.HAVEN]: string[];
-  [Work.CANAAN]: string[];
-  [Work.SHIRE]: string[];
-  [Work.SANCHIBAGS]: string[];
+  ctaId: Work;
+  images: string[];
+  imageCount: number;
 }
 
 export interface FeaturedVideo {
   title: string;
   description: string;
   video: string;
-}
-
-export interface CallToAction {
-  title: string;
-  nextWorkTitle: string;
-  nextWorkLocation: string;
-  nextWorkLink: string;
-  nextWorkImage: string;
-  nextWorkViewImage: string;
 }

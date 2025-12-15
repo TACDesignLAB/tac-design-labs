@@ -10,6 +10,7 @@ import achievementMob3 from '~/assets/images/achievement-photo-3.jpeg';
 import achievementPhoto4 from '~/assets/images/achievement-photo-4.jpeg';
 import achievementPhoto5 from '~/assets/images/achievement-photo-5.jpg';
 import achievementPhoto6 from '~/assets/images/achievement-photo-6.png';
+import achievementPhoto7 from '~/assets/images/achievement-photo-7.png';
 import achievementsBambooBackground from '~/assets/images/achievements-bamboo-background.png';
 import achievementsPageBackground from '~/assets/images/achievemnents-page-background.png';
 import buttonBackground from '~/assets/images/button-background.png';
@@ -59,6 +60,14 @@ const achievements = [
     buttonText: 'Read the full article',
 
     href: 'https://www.manoramaonline.com/homestyle/dream-home/2025/01/09/small-plot-eco-budget-home-trivandrum-hometour.html',
+  },
+  {
+    title: 'The New Indian Express: Featuring Carbon-Conscious Architecture',
+    description:
+      'The New Indian Express highlighted Ar. Ashams Ravi’s carbon-conscious home in Powdikonam, built using local and recycled materials. Completed in just 4.5 months, the project reflects TAC Design LAB’s commitment to sustainable and climate-responsive architecture.',
+    buttonText: 'Read the full article',
+    image: achievementPhoto7,
+    href: 'https://www.newindianexpress.com/cities/kochi/2020/Feb/13/a-carbon-conscious-home-2102670.html',
   },
   {
     title: 'TEDx: Sustainable Architecture - A Talk by Ar. Ashams Ravi',

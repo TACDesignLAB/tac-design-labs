@@ -1,11 +1,11 @@
+import { detailsStore } from '~/constants/works';
 import Image from 'next/image';
 
-import { workDetails } from '../constant';
 import type { HighlightsProps } from './model';
 
 function Highlights(props: HighlightsProps) {
   const { work } = props;
-  const currentWork = workDetails[work];
+  const currentWork = detailsStore[work];
 
   return (
     <div className="flex w-full flex-wrap items-center justify-around gap-2 bg-[#420C03] p-3 lg:mt-3 lg:h-[100px] lg:p-0">

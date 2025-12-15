@@ -14,7 +14,7 @@ import akshay from '~/assets/profile-images/akshay.jpg';
 import ashams from '~/assets/profile-images/ashams.jpg';
 import aswathi from '~/assets/profile-images/aswathy.jpg';
 import priya from '~/assets/profile-images/priya.jpeg';
-import vijayan from '~/assets/profile-images/vijayan.jpg';
+import vinoth from '~/assets/profile-images/vinoth.jpg';
 
 import type { StaticImageData } from 'next/image';
 
@@ -59,11 +59,13 @@ const teamMemberDetails: TeamMember[] = [
     position: 'Project Manager',
   },
   {
-    name: 'ABHIJITH VIJAYAN',
-    summary: `A Project Engineer with four years of expertise, Abhijith Vijayan has led numerous projects from inception to completion. He is a graduate of Mohandas College of Engineering and Technology, Trivandrum, holding a Bachelor of Technology in Civil Engineering. Abhijith has demonstrated expertise in managing budgets, resulting in increased production efficiency, reduced costs, and revenue growth. He is adept at identifying and mitigating project risks, ensuring on-time and within-budget delivery.<br/><br/>In his previous roles, Abhijith worked as a Site Engineer at COSTFORD (Centre of Science and Technology for Rural Development) in Trivandrum, where he contributed to housing projects for the SC community at Venganoor Grama Panchayath and other residential projects. He also gained valuable experience at SR Electricals, managing the construction of petrol pumps. His commitment to safety is evident in the development and implementation of a project safety plan that led to zero safety incidents during the project timeline. Abhijith’s technical proficiency and strong leadership skills make him an essential part of the TAC Design LAB team.
-    `,
-    picture: vijayan,
-    position: 'Project Engineer',
+    name: 'VINOTH K',
+    summary: `<p><span style="font-weight: 400;">A passionate young architect with a strong interest in sustainable and eco-conscious design, Vinoth K joined TAC Design LAB after completing his Bachelor of Architecture from AMS Academy of Architecture, affiliated with Anna University, Tamil Nadu.</span></p>
+<p><span style="font-weight: 400;">His association with TAC began during his internship, where he actively contributed to residential and commercial projects, working on detailed drawings, electrical layouts, interior concepts, 3D modelling, and visual renders. His enthusiasm for hands-on learning led him to participate in mud and bamboo workshops conducted by Bhutha Earthen Architects and TAC Design LAB, deepening his understanding of natural building materials and sustainable construction techniques.</span></p>
+<p><span style="font-weight: 400;">Vinoth&rsquo;s approach to design is driven by a genuine commitment to sustainability, integrating renewable energy, passive design principles, and locally sourced materials to create spaces that are both functional and environmentally responsible. As a Junior Architect, he continues to bring fresh ideas, technical skill, and creative energy to the team at TAC Design LAB.</span></p>
+<p>&nbsp;</p>`,
+    picture: vinoth,
+    position: 'Junior Architect',
   },
   {
     name: 'ASWATHY U V',
