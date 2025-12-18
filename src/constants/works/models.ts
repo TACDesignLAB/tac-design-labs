@@ -7,6 +7,8 @@ export enum Work {
   SANCHIBAGS = 'sanchi-bags',
   CHEMBAKASSERY = 'chembakassery',
   MAISONSANGHAM = 'maison-sangham',
+  STROCH = 'st-roch',
+  BIJU = 'biju',
 }
 
 interface BulletPoint {

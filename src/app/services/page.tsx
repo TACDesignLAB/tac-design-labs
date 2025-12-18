@@ -10,15 +10,18 @@ import { getOptimizedBackgroundImage } from '~/utils/background-image-optimizer'
 
 import OurWorkBgButton from '~/assets/images/button-background.png';
 import servicePageBackground from '~/assets/images/career-page-background.png';
-import conservationProject from '~/assets/images/conservation-project.png';
 import designDreamDeliverBG from '~/assets/images/design-dream-deliver-bg.jpg';
-import hospitality from '~/assets/images/hospilatiy-service.png';
-import institution from '~/assets/images/institution-service.png';
 import interiorService from '~/assets/images/interior-service.png';
 import landscapeDesign from '~/assets/images/landscape-design.png';
 import piscart from '~/assets/images/piscart-service.jpeg';
 import serviceYoutubeBg from '~/assets/images/services-yt-bg.png';
 import udupiService from '~/assets/images/udupi-service.jpeg';
+// TODO
+import conservationProject from '~/assets/services/conservication.png';
+// TODO
+import hospitality from '~/assets/services/hospitality.png';
+// TODO
+import institution from '~/assets/services/institutional.jpg';
 
 import { ServiceCard } from './service-card';
 import type { StaticImageData } from 'next/image';
