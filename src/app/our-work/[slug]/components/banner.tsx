@@ -1,23 +1,25 @@
+import { detailsStore } from '~/constants/works';
 import Image from 'next/image';
 
-import { workDetails } from '../constant';
-import type { WorkDetails } from '../model';
 import type { BannerProps } from './model';
 
 function Banner(props: BannerProps) {
-  const { imagePath, work } = props;
-  const currentWork: WorkDetails = workDetails[work];
+  const { work } = props;
+  const currentWork = detailsStore[work];
 
   return (
     <div className="relative flex h-[441px] w-full items-center justify-center lg:h-[622px]">
       <Image
-        src={imagePath}
+        src={currentWork.tileImg}
         alt={currentWork.title}
         fill
         objectFit="cover"
         objectPosition="center"
         className="scale-100 transform"
       />
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/50" />
 
       {/* Text Part */}
       <div className="flex h-[304px] w-full flex-col items-center justify-center gap-4 bg-[#ECC19A33] text-center text-white backdrop-blur-[4.1px]">

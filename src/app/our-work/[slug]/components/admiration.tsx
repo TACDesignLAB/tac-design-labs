@@ -1,14 +1,15 @@
-import { workDetails } from '../constant';
+import { detailsStore } from '~/constants/works';
+
 import type { AdmirationProps } from './model';
 
 function Admiration(props: AdmirationProps) {
   const { work } = props;
 
-  const currentWork = workDetails[work];
+  const currentWork = detailsStore[work];
 
   return (
     <div
-      className="mx-auto flex h-[300px] w-full items-center justify-center"
+      className="mx-auto flex min-h-[300px] w-full items-center justify-center"
       style={{
         backgroundImage: "url('/works/admiration-bg.png')",
         borderTop: '8px solid white',

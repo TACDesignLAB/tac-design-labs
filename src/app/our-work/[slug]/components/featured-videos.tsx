@@ -1,17 +1,17 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { detailsStore } from '~/constants/works';
+import { type FeaturedVideo } from '~/constants/works/models';
 
 import landingPageLeavesBackground from '~/assets/images/landing-page-team-background.png';
 
-import { workDetails } from '../constant';
-import type { FeaturedVideo } from '../model';
 import type { FeaturedVideoProps } from './model';
 
 function FeaturedVideos(props: FeaturedVideoProps) {
   const { work } = props;
 
-  const currentWork = workDetails[work];
+  const currentWork = detailsStore[work];
 
   return (
     <>
