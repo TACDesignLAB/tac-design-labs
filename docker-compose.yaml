@@ -2,13 +2,112 @@ version: '3.8'
 name: 'tac-labs-frontend'
 
 services:
+  traefik:
+    image: traefik:v2.10
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/acme.json:/acme.json
+    networks:
+      - app-network
+    restart: unless-stopped
+
   tac-labs-next-frontend:
     build:
       context: .
+      dockerfile: Dockerfile
       args:
         - NEXT_PUBLIC_GOOGLE_ANALYTICS=${NEXT_PUBLIC_GOOGLE_ANALYTICS}
         - NEXT_PUBLIC_CLARITY_PROJECT_ID=${NEXT_PUBLIC_CLARITY_PROJECT_ID}
-        - NEXT_PUBLIC_STRAPI_URL=${NEXT_PUBLIC_STRAPI_URL}
+        - NEXT_PUBLIC_STRAPI_URL=http://strapi.tacdesignlab.com
     image: tac-labs/next-frontend
-    ports:
-      - '3000:3000'
+    expose:
+      - "3000"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - strapi
+    networks:
+      - app-network
+    labels:
+      - "traefik.enable=true"
+      # Main frontend router
+      - "traefik.http.routers.frontend.rule=Host(`tacdesignlab.com`) || Host(`www.tacdesignlab.com`)"
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.services.frontend.loadbalancer.server.port=3000"
+      # Redirect .org to .com
+      - "traefik.http.routers.frontend-org-redirect.rule=Host(`tacdesignlab.org`) || Host(`www.tacdesignlab.org`)"
+      - "traefik.http.routers.frontend-org-redirect.entrypoints=web"
+      - "traefik.http.routers.frontend-org-redirect.middlewares=org-to-com"
+      - "traefik.http.middlewares.org-to-com.redirectregex.regex=^https?://(?:www\\.)?tacdesignlab\\.org/(.*)"
+      - "traefik.http.middlewares.org-to-com.redirectregex.replacement=http://tacdesignlab.com/$${1}"
+      - "traefik.http.middlewares.org-to-com.redirectregex.permanent=true"
+    restart: unless-stopped
+
+  strapi:
+    image: strapi/strapi:latest
+    environment:
+      - DATABASE_CLIENT=postgres
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=strapi
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_SSL=false
+      - JWT_SECRET=${JWT_SECRET:-changeThisToASecretKey}
+      - ADMIN_JWT_SECRET=${ADMIN_JWT_SECRET:-changeThisToASecretKey}
+      - APP_KEYS=${APP_KEYS:-toBeModified1,toBeModified2}
+      - API_TOKEN_SALT=${API_TOKEN_SALT:-toBeModified}
+    expose:
+      - "1337"
+    volumes:
+      - strapi-data:/srv/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - app-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.strapi.rule=Host(`strapi.tacdesignlab.com`)"
+      - "traefik.http.routers.strapi.entrypoints=web"
+      - "traefik.http.services.strapi.loadbalancer.server.port=1337"
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=strapi
+    expose:
+      - "5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+    driver: local
+  strapi-data:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge
