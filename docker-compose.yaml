@@ -1,21 +1,16 @@
-name: 'tac-labs-frontend'
+name: "tac-labs-frontend"
 
 services:
   traefik:
-    image: traefik:v2.10
-    command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
+    image: traefik:v3.6.6
     ports:
       - "80:80"
       - "443:443"
       - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./traefik/acme.json:/acme.json
+      - ./letsencrypt:/letsencrypt
+      - ./traefik.yml:/traefik.yml:ro
     networks:
       - app-network
     restart: unless-stopped
@@ -29,24 +24,28 @@ services:
         - NEXT_PUBLIC_CLARITY_PROJECT_ID=${NEXT_PUBLIC_CLARITY_PROJECT_ID}
         - NEXT_PUBLIC_STRAPI_URL=${NEXT_PUBLIC_STRAPI_URL}
     image: tac-labs/next-frontend
-    expose:
-      - "3000"
+    ports:
+      - "3000:3000"
     environment:
       - NODE_ENV=production
     networks:
       - app-network
     labels:
       - "traefik.enable=true"
-      # Main frontend router
+      # Main frontend router (HTTPS)
       - "traefik.http.routers.frontend.rule=Host(`tacdesignlab.com`) || Host(`www.tacdesignlab.com`)"
-      - "traefik.http.routers.frontend.entrypoints=web"
+      - "traefik.http.routers.frontend.entrypoints=websecure"
+      - "traefik.http.routers.frontend.tls=true"
+      - "traefik.http.routers.frontend.tls.certresolver=letsencrypt"
       - "traefik.http.services.frontend.loadbalancer.server.port=3000"
-      # Redirect .org to .com
+      # Redirect .org to .com (HTTPS)
       - "traefik.http.routers.frontend-org-redirect.rule=Host(`tacdesignlab.org`) || Host(`www.tacdesignlab.org`)"
-      - "traefik.http.routers.frontend-org-redirect.entrypoints=web"
+      - "traefik.http.routers.frontend-org-redirect.entrypoints=websecure"
+      - "traefik.http.routers.frontend-org-redirect.tls=true"
+      - "traefik.http.routers.frontend-org-redirect.tls.certresolver=letsencrypt"
       - "traefik.http.routers.frontend-org-redirect.middlewares=org-to-com"
       - "traefik.http.middlewares.org-to-com.redirectregex.regex=^https?://(?:www\\.)?tacdesignlab\\.org/(.*)"
-      - "traefik.http.middlewares.org-to-com.redirectregex.replacement=http://tacdesignlab.com/$${1}"
+      - "traefik.http.middlewares.org-to-com.redirectregex.replacement=https://tacdesignlab.com/$${1}"
       - "traefik.http.middlewares.org-to-com.redirectregex.permanent=true"
     restart: unless-stopped
 
@@ -64,10 +63,10 @@ services:
       - ADMIN_JWT_SECRET=${ADMIN_JWT_SECRET:-changeThisToASecretKey}
       - APP_KEYS=${APP_KEYS:-toBeModified1,toBeModified2}
       - API_TOKEN_SALT=${API_TOKEN_SALT:-toBeModified}
-      - URL=http://strapi.tacdesignlab.com
-      - ADMIN_URL=http://strapi.tacdesignlab.com/admin
-    expose:
-      - "1337"
+      - URL=https://strapi.tacdesignlab.com
+      - ADMIN_URL=https://strapi.tacdesignlab.com/admin
+    ports:
+      - "1337:1337"
     volumes:
       - strapi-data:/srv/app
     depends_on:
@@ -78,7 +77,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.strapi.rule=Host(`strapi.tacdesignlab.com`)"
-      - "traefik.http.routers.strapi.entrypoints=web"
+      - "traefik.http.routers.strapi.entrypoints=websecure"
+      - "traefik.http.routers.strapi.tls=true"
+      - "traefik.http.routers.strapi.tls.certresolver=letsencrypt"
       - "traefik.http.services.strapi.loadbalancer.server.port=1337"
     restart: unless-stopped
 
