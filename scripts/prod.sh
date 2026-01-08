@@ -24,7 +24,7 @@ fi
 case "$1" in
     start)
         echo -e "${GREEN}Starting production services...${NC}"
-        docker compose -f "$COMPOSE_FILE" up -d
+        docker compose -f "$COMPOSE_FILE" up -d --build
         echo -e "${GREEN}Services started successfully!${NC}"
         echo "Run './scripts/prod.sh status' to check service status"
         ;;
