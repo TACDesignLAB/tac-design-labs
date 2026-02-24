@@ -1,17 +1,8 @@
 # Decap CMS Configuration
-# -------------------------
-# Option A: Netlify Identity + Git Gateway (recommended for Netlify deployments)
-# backend:
-#   name: git-gateway
-#   branch: main
-
-# Option B: Direct GitHub OAuth (works with any host)
 backend:
   name: github
   repo: TACDesignLAB/tac-design-labs
   branch: development
-  auth_type: pkce
-  app_id: Ov23liFs9JpD1dbJSsrn
 
 # Uncomment to enable editorial workflow (draft → review → published)
 # publish_mode: editorial_workflow
