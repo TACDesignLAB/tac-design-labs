@@ -20,7 +20,7 @@ export async function generateMetadata({
 
   if (!slug) return {};
 
-  const blog = await getBlog(slug);
+  const blog = getBlog(slug);
 
   if (!blog) return {};
 
@@ -60,8 +60,8 @@ export default async function Page({
 
   if (!slug) return <></>;
 
-  const blog = await getBlog(slug);
-  const otherBlogs = await listBlogs({ pageSize: 5 });
+  const blog = getBlog(slug);
+  const otherBlogs = listBlogs({ pageSize: 5 });
 
   if (!blog) return <></>;
 

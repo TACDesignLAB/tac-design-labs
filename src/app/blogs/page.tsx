@@ -13,13 +13,13 @@ import { listBlogs } from '~/services/list-blogs';
 import { BlogCard } from './components/blog-card';
 import NoBlogFound from './components/no-blog-found';
 
-async function BlogMainPage() {
+function BlogMainPage() {
   const optimizedMainBlogsBackground = getOptimizedBackgroundImage({
     src: mainBlogsBackground.src,
     width: mainBlogsBackground.width,
     height: mainBlogsBackground.height,
   });
-  const blogsList = await listBlogs();
+  const blogsList = listBlogs();
 
   return (
     <div className="relative font-primary">
@@ -42,9 +42,9 @@ async function BlogMainPage() {
                 description={blog.shortDescription}
                 postedBy={blog.authorName}
                 publishedDate={new Date(blog.publishedOn)}
-                imageUrl={blog.coverImage.url ?? getPlaceholderImage()}
-                imageWidth={blog.coverImage.width ?? 0}
-                imageHeight={blog.coverImage.height ?? 0}
+                imageUrl={blog.coverImage.url || getPlaceholderImage()}
+                imageWidth={blog.coverImage.width}
+                imageHeight={blog.coverImage.height}
               />
             ))
           ) : (

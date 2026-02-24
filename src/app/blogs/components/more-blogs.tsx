@@ -30,8 +30,8 @@ function MoreBlogs(props: { blogs?: BlogListItem[]; currentBlogSlug: string }) {
               postedBy={blog.authorName}
               publishedDate={new Date(blog.publishedOn)}
               imageUrl={blog.coverImage.url || getPlaceholderImage()}
-              imageWidth={blog.coverImage.width ?? 0}
-              imageHeight={blog.coverImage.height ?? 0}
+              imageWidth={blog.coverImage.width}
+              imageHeight={blog.coverImage.height}
             />
           ))
         ) : (
@@ -92,8 +92,8 @@ function MobileMoreBlogs(props: { otherBlogs: BlogListItem[] | undefined }) {
                 postedBy={blog.authorName}
                 publishedDate={new Date(blog.publishedOn)}
                 imageUrl={blog.coverImage.url || getPlaceholderImage()}
-                imageWidth={blog.coverImage.width ?? 0}
-                imageHeight={blog.coverImage.height ?? 0}
+                imageWidth={blog.coverImage.width}
+                imageHeight={blog.coverImage.height}
               />
             </div>
           ))

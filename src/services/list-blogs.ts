@@ -4,12 +4,12 @@ import type { BlogListItem } from '~/lib/blogs';
 
 export type { BlogListItem };
 
-export async function listBlogs(args?: {
+export function listBlogs(args?: {
   /**@defaultValue 1 */
   page?: number;
   /**@defaultValue 25 */
   pageSize?: number;
-}): Promise<BlogListItem[] | undefined> {
+}): BlogListItem[] | undefined {
   const { page = 1, pageSize = 25 } = args ?? {};
 
   const all = getAllBlogs();
