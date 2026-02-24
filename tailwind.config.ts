@@ -1,4 +1,5 @@
 import tailwindContainerQueries from '@tailwindcss/container-queries';
+import tailwindTypography from '@tailwindcss/typography';
 import flowBitePlugin from 'flowbite/plugin';
 import tailwindCSSAnimate from 'tailwindcss-animate';
 
@@ -77,7 +78,28 @@ export default {
       height: {
         'screen-vh': 'calc(var(--vh, 1vh) * 85)',
       },
+      typography: {
+        blog: {
+          css: {
+            '--tw-prose-headings': '#C6742B',
+            '--tw-prose-links': '#1270CE',
+            '--tw-prose-body': '#000000',
+            '--tw-prose-bold': '#000000',
+            '--tw-prose-counters': '#C6742B',
+            '--tw-prose-bullets': '#C6742B',
+            '--tw-prose-quotes': '#C6742B',
+            '--tw-prose-quote-borders': '#C6742B',
+            h1: { fontSize: '1.875rem', lineHeight: '45px', paddingBottom: '23px' },
+            h2: { fontSize: '1.625rem', lineHeight: '45px', paddingBottom: '23px' },
+            h3: { fontSize: '1.4375rem', lineHeight: '45px', paddingBottom: '23px' },
+            h4: { lineHeight: '45px', paddingBottom: '23px' },
+            h5: { lineHeight: '45px', paddingBottom: '23px' },
+            h6: { textAlign: 'center', fontStyle: 'italic', fontSize: '0.625rem' },
+            p: { textAlign: 'justify', paddingBottom: '23px' },
+          },
+        },
+      },
     },
   },
-  plugins: [flowBitePlugin, tailwindCSSAnimate, tailwindContainerQueries],
+  plugins: [flowBitePlugin, tailwindCSSAnimate, tailwindContainerQueries, tailwindTypography],
 } satisfies Config;

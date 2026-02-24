@@ -1,0 +1,86 @@
+# Decap CMS Configuration
+# -------------------------
+# Option A: Netlify Identity + Git Gateway (recommended for Netlify deployments)
+# backend:
+#   name: git-gateway
+#   branch: main
+
+# Option B: Direct GitHub OAuth (works with any host)
+backend:
+  name: github
+  repo: TACDesignLAB/tac-design-labs
+  branch: development
+  auth_type: pkce
+  app_id: Ov23liFs9JpD1dbJSsrn
+
+# Uncomment to enable editorial workflow (draft → review → published)
+# publish_mode: editorial_workflow
+
+media_folder: public/blog-images # uploaded images stored here
+public_folder: /blog-images # public URL prefix for images
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/blogs"
+    create: true
+    slug: "{{slug}}" # filename = slug field value
+    identifier_field: slug
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+        hint: "URL-friendly identifier, e.g. sustainable-building-materials"
+        pattern:
+          [
+            "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "Lowercase letters, numbers and hyphens only",
+          ]
+
+      - label: "Short Description"
+        name: "short_description"
+        widget: "text"
+        hint: "Shown on the blog listing card (1–2 sentences)"
+
+      - label: "Meta Description"
+        name: "meta_description"
+        widget: "text"
+        hint: "Used for SEO. Keep under 160 characters."
+
+      - label: "Cover Image"
+        name: "cover_image"
+        widget: "image"
+        hint: "Recommended size: 1200×800px"
+
+      - label: "Cover Image Width"
+        name: "cover_image_width"
+        widget: "number"
+        default: 1200
+        value_type: "int"
+
+      - label: "Cover Image Height"
+        name: "cover_image_height"
+        widget: "number"
+        default: 800
+        value_type: "int"
+
+      - label: "Author"
+        name: "author"
+        widget: "string"
+        default: "admin"
+
+      - label: "Published On"
+        name: "published_on"
+        widget: "datetime"
+        format: "YYYY-MM-DDTHH:mm:ss.SSSZ"
+        date_format: "DD MMM YYYY"
+        time_format: false
+
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        hint: "Full blog content. Supports Markdown and inline HTML (for image captions, etc.)"

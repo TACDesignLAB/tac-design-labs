@@ -1,8 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { env } from '~/env';
-
 import { getOptimizedBackgroundImage } from '~/utils/background-image-optimizer';
 import { getPlaceholderImage } from '~/utils/get-placeholder-image';
 
@@ -44,14 +42,7 @@ async function BlogMainPage() {
                 description={blog.shortDescription}
                 postedBy={blog.authorName}
                 publishedDate={new Date(blog.publishedOn)}
-                imageUrl={
-                  blog.coverImage.url
-                    ? new URL(
-                        blog.coverImage.url,
-                        env.NEXT_PUBLIC_STRAPI_URL,
-                      ).toString()
-                    : getPlaceholderImage()
-                }
+                imageUrl={blog.coverImage.url ?? getPlaceholderImage()}
                 imageWidth={blog.coverImage.width ?? 0}
                 imageHeight={blog.coverImage.height ?? 0}
               />

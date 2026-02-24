@@ -2,8 +2,6 @@
 
 import React, { useRef, useState } from 'react';
 
-import { env } from '~/env';
-
 import { getPlaceholderImage } from '~/utils/get-placeholder-image';
 
 import { type BlogListItem } from '~/services/list-blogs';
@@ -31,14 +29,7 @@ function MoreBlogs(props: { blogs?: BlogListItem[]; currentBlogSlug: string }) {
               description={blog.shortDescription}
               postedBy={blog.authorName}
               publishedDate={new Date(blog.publishedOn)}
-              imageUrl={
-                blog.coverImage.url
-                  ? new URL(
-                      blog.coverImage.url,
-                      env.NEXT_PUBLIC_STRAPI_URL,
-                    ).toString()
-                  : getPlaceholderImage()
-              }
+              imageUrl={blog.coverImage.url || getPlaceholderImage()}
               imageWidth={blog.coverImage.width ?? 0}
               imageHeight={blog.coverImage.height ?? 0}
             />
@@ -100,14 +91,7 @@ function MobileMoreBlogs(props: { otherBlogs: BlogListItem[] | undefined }) {
                 description={blog.shortDescription}
                 postedBy={blog.authorName}
                 publishedDate={new Date(blog.publishedOn)}
-                imageUrl={
-                  blog.coverImage.url
-                    ? new URL(
-                        blog.coverImage.url,
-                        env.NEXT_PUBLIC_STRAPI_URL,
-                      ).toString()
-                    : getPlaceholderImage()
-                }
+                imageUrl={blog.coverImage.url || getPlaceholderImage()}
                 imageWidth={blog.coverImage.width ?? 0}
                 imageHeight={blog.coverImage.height ?? 0}
               />

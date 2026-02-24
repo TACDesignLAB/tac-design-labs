@@ -1,6 +1,4 @@
-import { env } from '~/env';
-
-import StrapiBlocksRenderer from '~/components/strapi-blocks-renderer';
+import MarkdownBlogRenderer from '~/components/markdown-blog-renderer';
 
 import { getPlaceholderImage } from '~/utils/get-placeholder-image';
 
@@ -26,9 +24,7 @@ export async function generateMetadata({
 
   if (!blog) return {};
 
-  const imageUrl = blog.coverImage.url
-    ? new URL(blog.coverImage.url, env.NEXT_PUBLIC_STRAPI_URL).toString()
-    : getPlaceholderImage();
+  const imageUrl = blog.coverImage.url || getPlaceholderImage();
 
   return {
     title: blog.title,
@@ -73,22 +69,15 @@ export default async function Page({
     <div className="bg-[#EDD7C3] font-primary">
       <BlogHero
         title={blog.title}
-        image={
-          blog.coverImage.url
-            ? new URL(
-                blog.coverImage.url,
-                env.NEXT_PUBLIC_STRAPI_URL,
-              ).toString()
-            : getPlaceholderImage()
-        }
-        imageWidth={blog.coverImage.width ?? 0}
-        imageHeight={blog.coverImage.height ?? 0}
+        image={blog.coverImage.url || getPlaceholderImage()}
+        imageWidth={blog.coverImage.width}
+        imageHeight={blog.coverImage.height}
         altText={blog.title}
         author={blog.authorName}
         publishedDate={blog.publishedOn}
       />
       <div className="p-5 md:p-28">
-        <StrapiBlocksRenderer content={blog.blogContent} />
+        <MarkdownBlogRenderer content={blog.content} />
       </div>
       <MoreBlogs blogs={otherBlogs ?? []} currentBlogSlug={slug} />
     </div>
